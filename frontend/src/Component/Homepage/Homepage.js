@@ -4,14 +4,6 @@ function Homepage() {
             <header>
                 <h1>Fitness Web Page</h1>
             </header>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Workouts</a></li>
-                    <li><a href="#">Nutrition</a></li>
-                </ul>
-            </nav>
             <main>
                 <h2>Welcome to our Fitness Web Page!</h2>
                 <p>We offer a variety of workouts and nutrition plans to help you achieve your fitness goals.</p>
