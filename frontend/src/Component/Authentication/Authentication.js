@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 class Authentication extends Component {
     render() {
         return (
             <div>
-                <h1>Hello to Authentication</h1>
+                <SignIn/>
+                <SignUp/>
             </div>
         );
     }
