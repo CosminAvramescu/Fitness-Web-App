@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Col from "react-bootstrap/Col";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import signImage from "./gym_authenticate.png"
 
 class Authentication extends Component {
     state = {
@@ -24,8 +25,8 @@ class Authentication extends Component {
     renderSignIn() {
         return (
             <Row className="justify-content-md-center">
+                <Col>{this.renderSignImage()}</Col>
                 <Col><SignIn/></Col>
-                <Col>"Image Here"</Col>
             </Row>
         );
     }
@@ -34,8 +35,14 @@ class Authentication extends Component {
         return (
             <Row className="justify-content-md-center">
                 <Col><SignUp/></Col>
-                <Col>"Image Here"</Col>
+                <Col>{this.renderSignImage()}</Col>
             </Row>
+        );
+    }
+
+    renderSignImage() {
+        return (
+            <img src={signImage} alt="Gym"/>
         );
     }
 }
