@@ -4,17 +4,17 @@ import SignUp from "./SignUp";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import signImage from "./gym_authenticate.png"
+import signImage from "../../Assets/gym_authenticate.png"
 
 class Authentication extends Component {
     state = {
-        value: this.props.value
+
     }
     render() {
         return (
             <div>
                 <Container fluid="md" className="p-5">
-                    {this.state.value === 1?
+                    {this.props.value === 1?
                         this.renderSignIn() : this.renderSignUp()
                     }
                 </Container>
