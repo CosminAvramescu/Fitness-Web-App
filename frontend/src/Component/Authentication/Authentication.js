@@ -3,11 +3,13 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
 class Authentication extends Component {
+    state = {
+        value: this.props.value
+    }
     render() {
         return (
             <div>
-                <SignIn/>
-                <SignUp/>
+                {this.state.value === 1? <SignIn/> : <SignUp/>}
             </div>
         );
     }

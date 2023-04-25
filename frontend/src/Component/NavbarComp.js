@@ -34,8 +34,8 @@ class NavbarComp extends Component {
                                 />
                             </Form>
 
-                            <Nav className="justify-content-end flex-grow-1 pe-3" activeKey="#Home">
-                                <Nav.Link as={Link} to="/signIn">Sing in</Nav.Link>
+                            <Nav className="justify-content-end flex-grow-1 pe-3" activeKey="#Authentication">
+                                <Nav.Link as={Link} to="/signIn">Sing In</Nav.Link>
                                 <Nav.Link as={Link} to="/signUp">Sign Up</Nav.Link>
                             </Nav>
 
@@ -47,8 +47,8 @@ class NavbarComp extends Component {
                     <Routes>
                         <Route path="/" element={<Navigate to="/Home" />} />
                         <Route path="/Home" element={<Homepage />} />
-                        <Route path="/signIn" element={<Authentication />} />
-                        <Route path="/signUp" element={<Authentication />} />
+                        <Route path="/signIn" element={<Authentication value={1} />} />
+                        <Route path="/signUp" element={<Authentication value={0} />} />
                         <Route path="*" element={<Homepage />} />
                     </Routes>
                 </div>
