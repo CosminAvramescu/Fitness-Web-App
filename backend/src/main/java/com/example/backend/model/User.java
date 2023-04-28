@@ -1,34 +1,105 @@
 package com.example.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
-import java.sql.Date;
+import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-@CrossOrigin("*")
-@Data
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+
+
+@Getter
+@Setter
+@Entity
+@EqualsAndHashCode
 @NoArgsConstructor
-@AllArgsConstructor
-public class User {
-    String name;
+public class User implements UserDetails {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
 
-    String password;
+    @Column(nullable = false, unique = true)
+    private String name;
 
-    String email;
+    @Column(nullable = false)
+    private String password;
 
-    Integer age;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    Float weight;
+    @Column(nullable = false, unique = true)
+    private String email;
 
-    Float height;
+    @Lob
+    byte[] certificate;
 
-    Date birthday;
+    private Integer age;
 
-    String sex;
+    private Float weight;
+
+    private Float height;
+
+    private Date birthday;
+
+    private String sex;
+
+    public User(String name, String password, String email, Integer age, Float weight, Float height, Date birthday, String sex) {
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
+        this.birthday = birthday;
+        this.sex = sex;
+        this.role = Role.TRAINEE;
+    }
+    public static User build(User user) {
+
+        return new User(
+                user.getUsername(),
+                user.getEmail(),
+                user.getPassword(),
+                user.getAge(),
+                user.getWeight(),
+                user.getHeight(),
+                user.getBirthday(),
+                user.getSex());
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority authority=new SimpleGrantedAuthority(role.name());
+        return Collections.singleton(authority);
+    }
+
+    @Override
+    public String getUsername() {
+        return name;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

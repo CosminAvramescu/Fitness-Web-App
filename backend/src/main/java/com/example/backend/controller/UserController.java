@@ -1,10 +1,8 @@
 package com.example.backend.controller;
 
-import com.example.backend.model.Trainer;
-import com.example.backend.repository.TrainerRepository;
-import com.example.backend.service.TrainerService;
+import com.example.backend.model.User;
+import com.example.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,15 +12,15 @@ import java.io.IOException;
 
 @RestController
 @RequiredArgsConstructor
-public class TrainerController {
-    private final TrainerService trainerService;
+public class UserController {
+    private final UserService userService;
     @PostMapping("/pdf/upload")
-    public Trainer handlePdfUpload(@RequestParam("file") MultipartFile file/*, Model model*/) throws IOException {
-        Trainer trainer = new Trainer();
-        trainer.setName(file.getOriginalFilename());
-        trainer.setCertificate(file.getBytes());
+    public User handlePdfUpload(@RequestParam("file") MultipartFile file/*, Model model*/) throws IOException {
+        User user = new User();
+        user.setName(file.getOriginalFilename());
+        user.setCertificate(file.getBytes());
 
-        return trainerService.addTrainer(trainer);
+        return userService.addUser(user);
 //        // add the saved entity to the model for display
 //        model.addAttribute("pdfFile", trainer);
 //
