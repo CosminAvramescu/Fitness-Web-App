@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.UserDTO;
 import com.example.backend.model.User;
 import com.example.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -16,11 +17,11 @@ public class UserController {
     private final UserService userService;
     @PostMapping("/pdf/upload")
     public User handlePdfUpload(@RequestParam("file") MultipartFile file/*, Model model*/) throws IOException {
-        User user = new User();
-        user.setName(file.getOriginalFilename());
-        user.setCertificate(file.getBytes());
+        UserDTO userDTO = new UserDTO();
+        userDTO.setName(file.getOriginalFilename());
+        userDTO.setCertificate(file.getBytes());
 
-        return userService.addUser(user);
+        return userService.saveUser(userDTO);
 //        // add the saved entity to the model for display
 //        model.addAttribute("pdfFile", trainer);
 //

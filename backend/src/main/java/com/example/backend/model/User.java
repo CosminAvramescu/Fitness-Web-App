@@ -18,6 +18,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @NoArgsConstructor
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
@@ -44,18 +45,15 @@ public class User implements UserDetails {
 
     private Float height;
 
-    private Date birthday;
-
     private String sex;
 
-    public User(String name, String password, String email, Integer age, Float weight, Float height, Date birthday, String sex) {
+    public User(String name, String password, String email, Integer age, Float weight, Float height, String sex) {
         this.name = name;
         this.password = password;
         this.email = email;
         this.age = age;
         this.weight = weight;
         this.height = height;
-        this.birthday = birthday;
         this.sex = sex;
         this.role = Role.TRAINEE;
     }
@@ -68,7 +66,6 @@ public class User implements UserDetails {
                 user.getAge(),
                 user.getWeight(),
                 user.getHeight(),
-                user.getBirthday(),
                 user.getSex());
     }
 
