@@ -3,37 +3,36 @@ package com.example.backend.service;
 import com.example.backend.dto.UserDTO;
 import com.example.backend.model.Role;
 import com.example.backend.model.User;
+import com.example.backend.register.token.Token;
+import com.example.backend.register.token.TokenRepository;
+import com.example.backend.register.token.TokenService;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.security.PasswordEncoder;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 
 @Service
+@RequiredArgsConstructor
 @Transactional
 @Slf4j
 public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final TokenService tokenService;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private final TokenRepository tokenRepository;
 
     Logger logger = LoggerFactory.getLogger(UserService.class);
 
@@ -53,14 +52,12 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
-    public User findUserByEmail(String email) throws UsernameNotFoundException{
-        return userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(String.format("user with email %s not found", email)));
-    }
+
 
     public ResponseEntity<?> signUpUser(User user) {
-        boolean userExists = userRepository.findByName(user.getName()).isPresent();
+        boolean userExists = userRepository.findByEmail(user.getEmail()).isPresent();
         if (userExists) {
-            logger.info("At singUp user with email " + user.getName() + " already exist");
+            logger.info("At singUp user with email " + user.getEmail() + " already exist");
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 
@@ -75,6 +72,16 @@ public class UserService implements UserDetailsService {
 
         userRepository.save(user);
 
+        String randomToken = UUID.randomUUID().toString();
+        Token token = new Token(
+                randomToken,
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(60),
+                user
+        );
+
+        tokenService.saveToken(token);
+
         logger.info("At singUp user " + user.getEmail() + " was created successfully");
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -85,18 +92,20 @@ public class UserService implements UserDetailsService {
 
     }
 
-    private Collection< ? extends GrantedAuthority> mapRolesToAuthorities(Collection <Role> roles) {
-        Collection < ? extends GrantedAuthority> mapRoles = roles.stream()
-                .map(role -> new SimpleGrantedAuthority(role.name()))
-                .collect(Collectors.toList());
-        return mapRoles;
-    }
-
     public void login(User user) {
-    }
+        Token token = tokenRepository.getTokenByUser(user);
 
-    public List<UserDTO> findAllUsers() {
-        List<User> users = userRepository.findAll();
-        return (List<UserDTO>) Collectors.toList();
+        if(token == null)
+        {
+            String randomToken = UUID.randomUUID().toString();
+            Token newToken = new Token(
+                    randomToken,
+                    LocalDateTime.now(),
+                    LocalDateTime.now().plusMinutes(60),
+                    user
+            );
+            tokenService.saveToken(newToken);
+            logger.info("User with email " + user.getEmail() + "is connected");
+        }
     }
 }
