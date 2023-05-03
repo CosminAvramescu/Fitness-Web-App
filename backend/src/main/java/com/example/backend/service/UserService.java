@@ -15,8 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,7 +25,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
-public class UserService implements UserDetailsService {
+public class UserService{
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final TokenService tokenService;
@@ -86,11 +84,6 @@ public class UserService implements UserDetailsService {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @Override
-    public User loadUserByUsername(String name) throws UsernameNotFoundException {
-        return userRepository.findByName(name).orElseThrow(() -> new UsernameNotFoundException(String.format("user with name %s not found", name)));
-
-    }
 
     public void login(User user) {
         Token token = tokenRepository.getTokenByUser(user);

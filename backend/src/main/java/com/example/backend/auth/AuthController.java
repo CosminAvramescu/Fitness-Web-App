@@ -1,20 +1,15 @@
 package com.example.backend.auth;
 
-import com.example.backend.dto.UserDTO;
 import com.example.backend.model.User;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.service.UserService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -34,7 +29,7 @@ public class AuthController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             userService.login(byUsername.get());
-            String username = byUsername.get().getUsername();
+            String username = byUsername.get().getName();
             Integer userId = byUsername.get().getId();
             Enum role = byUsername.get().getRole();
             Auth auth = new Auth(Long.valueOf(userId), username, role);
