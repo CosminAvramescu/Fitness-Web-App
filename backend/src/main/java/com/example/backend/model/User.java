@@ -1,34 +1,45 @@
 package com.example.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
-import java.sql.Date;
+import jakarta.persistence.*;
+import lombok.*;
 
-@CrossOrigin("*")
-@Data
+
+@Getter
+@Setter
+@Entity
+@EqualsAndHashCode
 @NoArgsConstructor
+@Builder
 @AllArgsConstructor
 public class User {
-    String name;
 
-    String password;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
 
-    String email;
+    private String name;
 
-    Integer age;
 
-    Float weight;
+    private String password;
 
-    Float height;
 
-    Date birthday;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    String sex;
+
+    private String email;
+
+    @Lob
+    byte[] certificate;
+
+    private Integer age;
+
+    private Float weight;
+
+    private Float height;
+
+    private String sex;
+
+
 }
