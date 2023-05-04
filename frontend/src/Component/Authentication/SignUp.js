@@ -4,11 +4,12 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import {ToggleButton, ToggleButtonGroup} from "react-bootstrap";
+import axios from "axios";
 
 class SignUp extends Component {
     state = {
         step: 1,
-        role: 2,
+        role: 1,
         firstName: '',
         lastName: '',
         username: '',
@@ -43,13 +44,47 @@ class SignUp extends Component {
 
     handleChange = (event) => {
         event.preventDefault();
-        this.setState({[event.target.name]: event.target.value})
+        const {name, value} = event.target;
+        this.setState({[name]: value});
     }
 
     handleRoleChange = (selectedRole) => {
         this.setState({
             role: selectedRole
         });
+    }
+
+    handleCreateAccount = async (event) => {
+        event.preventDefault();
+
+        const user = new User(
+            this.state.role,
+            this.state.firstName,
+            this.state.lastName,
+            this.state.username,
+            this.state.email,
+            this.state.contactPhone,
+            this.state.password,
+            this.state.county,
+            this.state.city,
+            this.state.street,
+            this.state.age,
+            this.state.height,
+            this.state.weight,
+            this.state.birthday
+        )
+
+        let url = "http://localhost:8082/user/addUser"
+        let response = await axios.post(url, user,
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
+
+        user.toString()
+        console.log(response)
     }
 
     render() {
@@ -152,7 +187,8 @@ class SignUp extends Component {
 
                 <Row>
                     <Col xs={6}>
-                        <Button variant="primary" style={{width: '100%'}} type="submit">
+                        <Button variant="primary" style={{width: '100%'}} type="submit"
+                                onClick={this.handleCreateAccount}>
                             CREATE ACCOUNT
                         </Button>
                     </Col>
@@ -162,7 +198,6 @@ class SignUp extends Component {
                         </Button>
                     </Col>
                 </Row>
-
             </Form>
         )
     }
@@ -189,7 +224,7 @@ class SignUp extends Component {
                 </Row>
 
                 <Row>
-                    <Form.Group as={Col} className="mb-3" controlId="formUsername">
+                    <Form.Group as={Col} className="mb-3" controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
                         <Form.Control type="text"
                                       defaultValue={this.state.username}
@@ -199,7 +234,7 @@ class SignUp extends Component {
 
                     <Form.Group as={Col} className="mb-3" controlId="formBasicContactPhone">
                         <Form.Label>Contact Phone</Form.Label>
-                        <Form.Control type="text"
+                        <Form.Control type="tel"
                                       defaultValue={this.state.contactPhone}
                                       name="contactPhone"
                                       required onChange={this.handleChange}/>
@@ -240,3 +275,52 @@ class SignUp extends Component {
 }
 
 export default SignUp;
+
+class User {
+    constructor(role,
+                firstName,
+                lastName,
+                username,
+                email,
+                contactPhone,
+                password,
+                county,
+                city,
+                street,
+                age,
+                height,
+                weight,
+                birthday) {
+        this.role = role;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.contactPhone = contactPhone;
+        this.password = password;
+        this.county = county;
+        this.city = city;
+        this.street = street;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.birthday = birthday;
+    }
+
+    toString() {
+        console.log("Role:", this.role);
+        console.log("First Name:", this.firstName);
+        console.log("Last Name:", this.lastName);
+        console.log("Username:", this.username);
+        console.log("Email:", this.email);
+        console.log("Contact Phone:", this.contactPhone);
+        console.log("Password:", this.password);
+        console.log("County:", this.county);
+        console.log("City:", this.city);
+        console.log("Street:", this.street);
+        console.log("Age:", this.age);
+        console.log("Height:", this.height);
+        console.log("Weight:", this.weight);
+        console.log("Birthday:", this.birthday);
+    }
+}
