@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import {ToggleButton, ToggleButtonGroup} from "react-bootstrap";
+import axios from "axios";
 
 class SignUp extends Component {
     state = {
@@ -11,8 +12,9 @@ class SignUp extends Component {
         role: 1,
         firstName: '',
         lastName: '',
+        username: '',
         email: '',
-        phoneNumber: '',
+        contactPhone: '',
         password: '',
         confirmPassword: '',
         county: '',
@@ -22,7 +24,7 @@ class SignUp extends Component {
         height: 0,
         weight: 0,
         birthday: '',
-
+        certificate: null
     }
 
     nextStep = (e) => {
@@ -42,18 +44,60 @@ class SignUp extends Component {
     }
 
     handleChange = (event) => {
-        this.setState({[event.target.name]: event.target.value})
+        event.preventDefault();
+        const {name, value} = event.target;
+        this.setState({[name]: value});
+    }
+
+    handleRoleChange = (selectedRole) => {
+        this.setState({
+            role: selectedRole
+        });
+    }
+
+    handleCreateAccount = async (event) => {
+        event.preventDefault();
+
+        const user = new User(
+            this.state.role,
+            this.state.firstName,
+            this.state.lastName,
+            this.state.username,
+            this.state.email,
+            this.state.contactPhone,
+            this.state.password,
+            this.state.county,
+            this.state.city,
+            this.state.street,
+            this.state.age,
+            this.state.height,
+            this.state.weight,
+            this.state.birthday,
+            this.state.certificate
+        )
+
+        let url = "http://localhost:8082/user/addUser"
+        let response = await axios.post(url, user,
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
+
+        user.toString()
+        console.log(response)
     }
 
     render() {
         const {
-            step, firstName, lastName, email, phoneNumber, password, confirmPassword,
-            role, county, city, street, age, height, weight, birthday
+            step, firstName, lastName, username, email, contactPhone, password, confirmPassword,
+            role, county, city, street, age, height, weight, birthday, certificate
         } = this.state;
 
         const inputValues = {
-            firstName, lastName, email, phoneNumber, password, confirmPassword,
-            role, county, city, street, age, height, weight, birthday
+            firstName, lastName, email, username, contactPhone, password, confirmPassword,
+            role, county, city, street, age, height, weight, birthday, certificate
         };
 
         switch (step) {
@@ -67,60 +111,96 @@ class SignUp extends Component {
     renderRoleData() {
         return (
             <Form>
-                <ToggleButtonGroup type="radio" name="options" defaultValue={1} className="mb-3"
-                                   style={{width: '100%'}}>
+                <ToggleButtonGroup type="radio" className="mb-3"
+                                   style={{width: '100%'}}
+                                   value={this.state.role}
+                                   name="role"
+                                   onChange={this.handleRoleChange}>
+
                     <ToggleButton id="tbg-trainer" variant="light" value={1}>
                         TRAINER
                     </ToggleButton>
+
                     <ToggleButton id="tbg-trainee" variant="light" value={2}>
                         TRAINEE
                     </ToggleButton>
                 </ToggleButtonGroup>
 
                 <Row>
-
                     <Form.Group as={Col} className="mb-3" controlId="formBasicCounty">
                         <Form.Label>County</Form.Label>
-                        <Form.Control type="county" placeholder="County"/>
+                        <Form.Control type="text"
+                                      defaultValue={this.state.county}
+                                      name="county"
+                                      required onChange={this.handleChange}/>
                     </Form.Group>
 
                     <Form.Group as={Col} className="mb-3" controlId="formBasicCity">
                         <Form.Label>City</Form.Label>
-                        <Form.Control type="city" placeholder="City"/>
+                        <Form.Control type="text"
+                                      defaultValue={this.state.city}
+                                      name="city"
+                                      required onChange={this.handleChange}/>
                     </Form.Group>
                 </Row>
 
                 <Form.Group as={Col} className="mb-3" controlId="formBasicStreet">
                     <Form.Label>Street</Form.Label>
-                    <Form.Control type="street" placeholder="Street"/>
+                    <Form.Control type="text"
+                                  defaultValue={this.state.street}
+                                  name="street"
+                                  required onChange={this.handleChange}/>
                 </Form.Group>
 
                 <Row className="mb-4">
                     <Form.Group as={Col} className="mb-2" controlId="formBasicAge">
                         <Form.Label>Age</Form.Label>
-                        <Form.Control type="age" placeholder="Age"/>
+                        <Form.Control type="number"
+                                      defaultValue={this.state.age}
+                                      name="age"
+                                      required onChange={this.handleChange}/>
                     </Form.Group>
 
 
                     <Form.Group as={Col} className="mb-2" controlId="formBasicHeight">
                         <Form.Label>Height</Form.Label>
-                        <Form.Control type="height" placeholder="Height"/>
+                        <Form.Control type="number"
+                                      defaultValue={this.state.height}
+                                      name="height"
+                                      required onChange={this.handleChange}/>
                     </Form.Group>
 
                     <Form.Group as={Col} className="mb-2" controlId="formBasicWeight">
                         <Form.Label>Weight</Form.Label>
-                        <Form.Control type="weight" placeholder="Weight"/>
+                        <Form.Control type="number"
+                                      defaultValue={this.state.weight}
+                                      name="weight"
+                                      required onChange={this.handleChange}/>
                     </Form.Group>
 
-                    <Form.Group as={Col} xs={4} className="mb-2" controlId="formBasicBirthday">
+                    <Form.Group as={Col} xs={5} className="mb-2" controlId="formBasicBirthday">
                         <Form.Label>Birthday</Form.Label>
-                        <Form.Control type="birthday" placeholder="Birthday"/>
+                        <Form.Control type="date"
+                                      defaultValue={this.state.birthday}
+                                      name="birthday"
+                                      required onChange={this.handleChange}/>
                     </Form.Group>
                 </Row>
 
-                <Row>
+                {this.state.role === 1 ?
+                    <Form.Group as={Col} className="mb-4" controlId="formBasicCertificate">
+                        <Form.Label>Certificate</Form.Label>
+                        <Form.Control type="file"
+                                      defaultValue={null}
+                                      required onChange={this.handleChange}
+                                      name="certificate"/>
+                    </Form.Group> : null
+                }
+
+                <Row className="mb-4">
                     <Col xs={6}>
-                        <Button variant="primary" style={{width: '100%'}} type="submit">
+                        <Button variant="primary" style={{width: '100%'}} type="submit"
+                                onClick={this.handleCreateAccount}>
                             CREATE ACCOUNT
                         </Button>
                     </Col>
@@ -130,7 +210,6 @@ class SignUp extends Component {
                         </Button>
                     </Col>
                 </Row>
-
             </Form>
         )
     }
@@ -149,36 +228,54 @@ class SignUp extends Component {
 
                     <Form.Group as={Col} className="mb-3" controlId="formLastName">
                         <Form.Label>Last Name</Form.Label>
-                        <Form.Control type="lastName" placeholder="Last Name"/>
+                        <Form.Control type="text"
+                                      defaultValue={this.state.lastName}
+                                      name="lastName"
+                                      required onChange={this.handleChange}/>
                     </Form.Group>
                 </Row>
 
                 <Row>
-                    <Form.Group as={Col} className="mb-3" controlId="formUsername">
+                    <Form.Group as={Col} className="mb-3" controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
-                        <Form.Control type="username" placeholder="Username"/>
+                        <Form.Control type="text"
+                                      defaultValue={this.state.username}
+                                      name="username"
+                                      required onChange={this.handleChange}/>
                     </Form.Group>
 
                     <Form.Group as={Col} className="mb-3" controlId="formBasicContactPhone">
                         <Form.Label>Contact Phone</Form.Label>
-                        <Form.Control type="contactPhone" placeholder="Contact Phone"/>
+                        <Form.Control type="tel"
+                                      defaultValue={this.state.contactPhone}
+                                      name="contactPhone"
+                                      required onChange={this.handleChange}/>
                     </Form.Group>
 
                 </Row>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Email or Profile"/>
+                    <Form.Control type="email"
+                                  defaultValue={this.state.email}
+                                  name="email"
+                                  required onChange={this.handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password"/>
+                    <Form.Control type="password"
+                                  defaultValue={this.state.password}
+                                  name="password"
+                                  required onChange={this.handleChange}/>
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formConfirmPassword">
+                <Form.Group className="mb-4" controlId="formConfirmPassword">
                     <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control type="password" placeholder="Confrim Password"/>
+                    <Form.Control type="password"
+                                  defaultValue={this.state.confirmPassword}
+                                  name="confirmPassword"
+                                  required onChange={this.handleChange}/>
                 </Form.Group>
 
                 <Button className="mb-3" variant="primary" style={{width: '50%'}} onClick={this.nextStep}>
@@ -190,3 +287,55 @@ class SignUp extends Component {
 }
 
 export default SignUp;
+
+class User {
+    constructor(role,
+                firstName,
+                lastName,
+                username,
+                email,
+                contactPhone,
+                password,
+                county,
+                city,
+                street,
+                age,
+                height,
+                weight,
+                birthday,
+                certificate) {
+        this.role = role;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.contactPhone = contactPhone;
+        this.password = password;
+        this.county = county;
+        this.city = city;
+        this.street = street;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.birthday = birthday;
+        this.certificate = certificate;
+    }
+
+    toString() {
+        console.log("Role:", this.role);
+        console.log("First Name:", this.firstName);
+        console.log("Last Name:", this.lastName);
+        console.log("Username:", this.username);
+        console.log("Email:", this.email);
+        console.log("Contact Phone:", this.contactPhone);
+        console.log("Password:", this.password);
+        console.log("County:", this.county);
+        console.log("City:", this.city);
+        console.log("Street:", this.street);
+        console.log("Age:", this.age);
+        console.log("Height:", this.height);
+        console.log("Weight:", this.weight);
+        console.log("Birthday:", this.birthday);
+        console.log("Certificate:", this.certificate);
+    }
+}

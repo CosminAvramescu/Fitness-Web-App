@@ -50,6 +50,7 @@ class NavbarComp extends Component {
                         <Route path="/Home" element={<Homepage />} />
                         <Route path="/signIn" element={<Authentication value={1} />} />
                         <Route path="/signUp" element={<Authentication value={0} />} />
+                        <Route path="/UploadFile" element={<UploadFile />} />
                         <Route path="*" element={<Homepage />} />
                     </Routes>
                 </div>
