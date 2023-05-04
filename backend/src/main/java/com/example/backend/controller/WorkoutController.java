@@ -86,4 +86,15 @@ public class WorkoutController {
         }
         return null;
     }
+
+    @GetMapping("allFileWorkouts/{workoutId}")
+    public List<FileWorkout> getAllFileWorkouts(@PathVariable("workoutId") Integer workoutId){
+        return workoutService.getAllFileWorkouts(workoutId);
+    }
+
+    @PutMapping("setFileWorkout/{workoutId}/{fileWorkoutId}")
+    public void setFileWorkout(@PathVariable("workoutId") Integer workoutId,
+                               @PathVariable("fileWorkoutId") Integer fileWorkoutId){
+        workoutService.setFileWorkout(workoutId, fileWorkoutId);
+    }
 }
