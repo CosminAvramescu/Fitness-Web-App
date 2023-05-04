@@ -42,7 +42,14 @@ class SignUp extends Component {
     }
 
     handleChange = (event) => {
+        event.preventDefault();
         this.setState({[event.target.name]: event.target.value})
+    }
+
+    handleRoleChange = (selectedRole) => {
+        this.setState({
+            role: selectedRole
+        });
     }
 
     render() {
@@ -71,7 +78,7 @@ class SignUp extends Component {
                                    style={{width: '100%'}}
                                    value={this.state.role}
                                    name="role"
-                                   onChange={this.handleChange}>
+                                   onChange={this.handleRoleChange}>
 
                     <ToggleButton id="tbg-trainer" variant="light" value={1}>
                         TRAINER
