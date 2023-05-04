@@ -23,13 +23,13 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<Auth> login(@RequestBody AuthRequest authRequest) {
-        Optional<User> byUsername = userRepository.findByName(authRequest.getName());
+        Optional<User> byUsername = userRepository.findByUsername(authRequest.getUsername());
         if (!byUsername.isPresent()) {
             logger.warn("Auth failed, user not found");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             userService.login(byUsername.get());
-            String username = byUsername.get().getName();
+            String username = byUsername.get().getUsername();
             Integer userId = byUsername.get().getId();
             Enum role = byUsername.get().getRole();
             Auth auth = new Auth(Long.valueOf(userId), username, role);

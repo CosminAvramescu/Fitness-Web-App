@@ -9,13 +9,8 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.sql.rowset.serial.SerialBlob;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.sql.Blob;
-import java.sql.SQLException;
 
 @RestController
 @RequiredArgsConstructor
@@ -42,7 +37,7 @@ public class UserController {
         headers.setContentType(MediaType.APPLICATION_PDF);
 
         headers.setContentDisposition(ContentDisposition.attachment()
-                .filename(user.getName())
+                .filename("certificate.pdf")
                 .build());
         byte[] certificate= user.getCertificate();
         String home = System.getProperty("user.home");
@@ -61,5 +56,10 @@ public class UserController {
     @PutMapping("setWorkout/{userId}/{workoutId}")
     public User setWorkout(@PathVariable("userId") Integer userId, @PathVariable("workoutId") Integer workoutId){
         return userService.setWorkout(userId, workoutId);
+    }
+
+    @PostMapping("addUser")
+    public User addUser(@RequestBody User user){
+        return userService.addUser(user);
     }
 }

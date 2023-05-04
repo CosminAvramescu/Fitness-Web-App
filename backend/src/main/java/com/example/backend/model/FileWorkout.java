@@ -20,6 +20,8 @@ public class FileWorkout {
 
     String filename;
 
+    String description;
+
     @ManyToOne
     Workout workout;
 }
