@@ -76,7 +76,7 @@ class SignUp extends Component {
             this.state.certificate
         )
 
-        let url = "http://localhost:8082/user/addUser"
+        let url = "http://localhost:8082/api/v1/register"
         let response = await axios.post(url, user,
             {
                 headers: {
