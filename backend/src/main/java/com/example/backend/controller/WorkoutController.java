@@ -5,7 +5,7 @@ import com.example.backend.model.User;
 import com.example.backend.model.Workout;
 import com.example.backend.service.WorkoutService;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.io.FileUtils;
+//import org.apache.commons.io.FileUtils;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -76,11 +76,11 @@ public class WorkoutController {
             String home = System.getProperty("user.home");
             String filePath = home + "/Downloads/Workout" + fw.getFilename();
 
-            try {
-                FileUtils.writeByteArrayToFile(new File(filePath), certificate);
-            } catch (IOException e) {
-                throw new RuntimeException("Error saving file to local path", e);
-            }
+//            try {
+//                FileUtils.writeByteArrayToFile(new File(filePath), certificate);
+//            } catch (IOException e) {
+//                throw new RuntimeException("Error saving file to local path", e);
+//            }
 
             return new ResponseEntity<>(fw.getFileWorkout(), headers, HttpStatus.OK);
         }

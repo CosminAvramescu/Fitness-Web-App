@@ -58,7 +58,7 @@ public class UserService{
         boolean namePresent = userRepository.findByUsername(user.getUsername()).isPresent();
         if (namePresent) {
             logger.info("At singUp user with username " + user.getUsername() + " already exist");
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 
         String encodedPassword = passwordEncoder.bCryptPasswordEncoder().encode(user.getPassword());
