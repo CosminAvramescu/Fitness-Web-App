@@ -47,18 +47,7 @@ export default class UploadFile extends Component {
         console.log(response)
     };
 
-    downloadFile = async () =>{
-        let url =
-            "http://localhost:8082/user/download/certificate/1";
-        let response = await axios.get(url,
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-        console.log(response)
-        return response
-    }
+
 
     render() {
         return (
@@ -104,7 +93,6 @@ export default class UploadFile extends Component {
                         >
                             Finish
                         </Button>
-                        <img src={this.downloadFile()}></img>
                     </div>
                 </CardContent>
             </Card>
