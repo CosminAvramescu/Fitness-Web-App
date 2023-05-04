@@ -64,10 +64,10 @@ function Homepage() {
                 <header style={{ position: 'absolute', top: 1020, left: 650  }}>
                     <h1 style={{  color: 'white' }}>Join Our <span style={{ color: 'darkgreen' }}>Trainers</span></h1>
                 </header>
-                <img src='../../img/trainer1.png' alt="coach1" style={{ position: "absolute", top: 1150, left: 250 }}/>
-                <img src='../../img/trainer2.png' alt="coach2" style={{ position: "absolute", top: 1150, left: 550 }}/>
-                <img src='../../img/trainer3.png' alt="coach3" style={{ position: "absolute", top: 1150, left: 850 }}/>
-                <img src='../../img/trainer4.png' alt="coach4" style={{ position: "absolute", top: 1150, left: 1150 }}/>
+                <img src="https://imgur.com/FJownuA.jpg" alt="coach1" style={{ width: 200, high: 270, position: "absolute", top: 1150, left: 250 }}/>
+                <img src="https://imgur.com/YTp7DMt.jpg" alt="coach2" style={{ width: 200, high: 270, position: "absolute", top: 1150, left: 550 }}/>
+                <img src="https://imgur.com/kqWhHI3.jpg" alt="coach3" style={{ width: 200, high: 270, position: "absolute", top: 1150, left: 850 }}/>
+                <img src="https://imgur.com/Nc2KwFi.jpg" alt="coach4" style={{ width: 200, high: 390, position: "absolute", top: 1150, left: 1150 }}/>
                 <header style={{ position: 'absolute', top: 1500, left: 150  }}>
                     <h2 style={{  color: 'white' }}>Burn Calories And  <span style={{ color: 'darkgreen' }}>Stay Healthy</span></h2>
                     <h2 style={{  color: 'white' }}>with <span style={{color: 'darkgreen' }}>FitnessFusion</span></h2>
