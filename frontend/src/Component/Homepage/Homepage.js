@@ -17,9 +17,9 @@ function Homepage() {
                     workouts, no matter where you are. Join our community of fitness enthusiasts today</p>
                 <p style={{ position: 'absolute', top: 260, left: 150, color:'white'  }}>
                     and start your journey towards a healthier and happier lifestyle!</p>
-                <img src='../../img/fitness.png' alt="Fitness" style={{ position: "absolute", top: 90, right: 200 }}/>
+                <img src="https://i.imgur.com/K5kcSeg.jpg" alt="Fitness" style={{ width: 350, high: 250, position: "absolute", top: 90, right: 200 }}/>
                 <button style={{ position: 'absolute', top: 320, left: 150, backgroundColor: '#4CAF50', padding: '10px 20px', color: 'black', border: 'none', borderRadius: '5px', fontSize: '16px', cursor: 'pointer' }} onClick={() => window.location.href = 'http://localhost:3000/signIn'}>Get Started</button>
-                <button style={{ position: 'absolute', top: 320, left: 400, backgroundColor: '#404040', padding: '10px 20px', color: 'black', border: 'none', borderRadius: '5px', fontSize: '16px', cursor: 'pointer' }}>Our Plans</button>
+                <button style={{ position: 'absolute', top: 320, left: 400, backgroundColor: '#FFFFFF', padding: '10px 20px', color: 'black', border: 'none', borderRadius: '5px', fontSize: '16px', cursor: 'pointer' }}>Our Plans</button>
                 <header style={{ position: 'absolute', top: 450, left: 150  }}>
                     <h2 style={{  color: 'white' }}>Workout Plans & <span style={{ color: 'darkgreen' }}>Nutritions</span></h2>
                 </header>
@@ -90,8 +90,7 @@ function Homepage() {
                     that everyone's journey towards better health is unique, which is why we offer customized   </p>
                 <p style={{ position: 'absolute', top: 1780, left: 150, color:'white'  }}>
                     fitness and nutrition plans that are tailored to your individual needs and preferences.</p>
-                <img src="https://via.placeholder.com/350x250" alt="Fitness-img" style={{ position: "absolute", top: 1550, right: 200 }}/>
-
+                <img src="https://i.imgur.com/K5kcSeg.jpg" alt="Fitness-img" style={{ width: 350, high: 250, position: "absolute", top: 1550, right: 200 }}/>
             </main>
             <footer>
                 <p style={{ position: 'absolute', top: 1990, left:600, color:'white'  }}> @2023 Fitness Web Page. All rights reserved.</p>
