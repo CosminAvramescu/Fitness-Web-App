@@ -55,9 +55,9 @@ public class UserService{
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 
-        boolean namePresent = userRepository.findByName(user.getName()).isPresent();
+        boolean namePresent = userRepository.findByUsername(user.getUsername()).isPresent();
         if (namePresent) {
-            logger.info("At singUp user with username " + user.getName() + " already exist");
+            logger.info("At singUp user with username " + user.getUsername() + " already exist");
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("user")
+@RequestMapping("fileWorkout")
 @CrossOrigin(origins = "*")
 public class FileWorkoutController {
     private final FileWorkoutService fileWorkoutService;
