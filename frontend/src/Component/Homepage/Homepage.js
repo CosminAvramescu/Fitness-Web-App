@@ -8,8 +8,8 @@ function Homepage() {
             </header>
             <main  style={{ backgroundColor: '#202020', position: 'relative' }}>
                 <header style={{ position: 'absolute', top: 100, left: 150  }}>
-                    <h1 style={{  color: 'white' }}>Get <span style={{ color: 'darkgreen' }}>Fit</span></h1>
-                    <h1 style={{  color: 'white' }}>Stay <span style={{color: 'darkgreen' }}>Motivated</span></h1>
+                    <h1 style={{  color: 'white', textAlign: 'left' }}>Get <span style={{ color: 'darkgreen' }}>Fit</span></h1>
+                    <h1 style={{  color: 'white', textAlign: 'left' }}>Stay <span style={{color: 'darkgreen' }}>Motivated</span></h1>
                 </header>
                 <p style={{ position: 'absolute', top: 220, left: 150, color:'white'  }}>
                     We believe that everyone deserves to have access to effective and enjoyable</p>
@@ -69,8 +69,8 @@ function Homepage() {
                 <img src="https://imgur.com/kqWhHI3.jpg" alt="coach3" style={{ width: 200, high: 270, position: "absolute", top: 1150, left: 850 }}/>
                 <img src="https://imgur.com/Nc2KwFi.jpg" alt="coach4" style={{ width: 200, high: 390, position: "absolute", top: 1150, left: 1150 }}/>
                 <header style={{ position: 'absolute', top: 1500, left: 150  }}>
-                    <h2 style={{  color: 'white' }}>Burn Calories And  <span style={{ color: 'darkgreen' }}>Stay Healthy</span></h2>
-                    <h2 style={{  color: 'white' }}>with <span style={{color: 'darkgreen' }}>FitnessFusion</span></h2>
+                    <h2 style={{  color: 'white', textAlign: 'left'}}>Burn Calories And  <span style={{ color: 'darkgreen' }}>Stay Healthy</span></h2>
+                    <h2 style={{  color: 'white', textAlign: 'left' }}>with <span style={{color: 'darkgreen' }}>FitnessFusion</span></h2>
                 </header>
                 <p style={{ position: 'absolute', top: 1600, left: 150, color:'white'  }}>
                     Welcome to our fitness and nutrition webpage! We are a team of dedicated fitness and nutrition  </p>
