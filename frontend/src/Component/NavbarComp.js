@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
+import UploadFile from "./UploadFile/UploadFile";
 
 class NavbarComp extends Component {
     render() {
@@ -49,6 +50,7 @@ class NavbarComp extends Component {
                         <Route path="/Home" element={<Homepage />} />
                         <Route path="/signIn" element={<Authentication />} />
                         <Route path="/signUp" element={<Authentication />} />
+                        <Route path="/UploadFile" element={<UploadFile />} />
                         <Route path="*" element={<Homepage />} />
                     </Routes>
                 </div>
