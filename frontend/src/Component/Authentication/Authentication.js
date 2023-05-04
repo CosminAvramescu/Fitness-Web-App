@@ -10,7 +10,7 @@ class Authentication extends Component {
     render() {
         return (
             <div>
-                <Container className="p-5">
+                <Container className="p-5" style={{ color: "#00C853" }}>
                     {this.props.value === 1?
                         this.renderSignIn() : this.renderSignUp()
                     }
