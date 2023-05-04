@@ -4,6 +4,9 @@ package com.example.backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -11,6 +14,7 @@ import lombok.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Builder
+@ToString
 @AllArgsConstructor
 public class User {
 
@@ -41,5 +45,6 @@ public class User {
 
     private String sex;
 
-
+    @ManyToMany
+    List<Workout> workoutList=new ArrayList<>();
 }

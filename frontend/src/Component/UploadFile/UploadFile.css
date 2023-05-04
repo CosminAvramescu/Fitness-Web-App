@@ -1,0 +1,35 @@
+#upload-button {
+    width: 100%;
+    justify-content: center;
+    background-color: lightcyan;
+    height: 50px;
+    border: none;
+    border-top: 1px solid black;
+}
+
+#upload-button:hover{
+    opacity: 80%;
+}
+
+#dropzone{
+    padding: 20px;
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+#wrapper-card{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: lightskyblue;
+}
+
+#wrapper{
+    justify-content: center;
+}
+
+#dropzone-label{
+    font-family: "Bell MT";
+}
