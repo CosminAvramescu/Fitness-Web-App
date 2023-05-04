@@ -6,7 +6,7 @@ class SignIn extends Component {
         return (
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Control type="email" placeholder="Email or Profile" />
+                    <Form.Control type="email" placeholder="Enter Email" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -17,7 +17,7 @@ class SignIn extends Component {
                     <Form.Check type="checkbox" label="Remember me" />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button variant="primary" style={{width: '50%'}} type="submit">
                     SIGN IN
                 </Button>
             </Form>

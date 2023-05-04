@@ -7,13 +7,10 @@ import Row from "react-bootstrap/Row";
 import signImage from "../../Assets/gym_authenticate.png"
 
 class Authentication extends Component {
-    state = {
-
-    }
     render() {
         return (
             <div>
-                <Container fluid="md" className="p-5">
+                <Container className="p-5">
                     {this.props.value === 1?
                         this.renderSignIn() : this.renderSignUp()
                     }
@@ -24,17 +21,17 @@ class Authentication extends Component {
 
     renderSignIn() {
         return (
-            <Row className="justify-content-md-center">
+            <Row>
                 <Col>{this.renderSignImage()}</Col>
-                <Col><SignIn/></Col>
+                <Col className="m-5"><SignIn/></Col>
             </Row>
         );
     }
 
     renderSignUp() {
         return (
-            <Row className="justify-content-md-center">
-                <Col><SignUp/></Col>
+            <Row>
+                <Col className="m-5"><SignUp/></Col>
                 <Col>{this.renderSignImage()}</Col>
             </Row>
         );
