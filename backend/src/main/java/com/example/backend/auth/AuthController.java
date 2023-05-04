@@ -23,7 +23,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<Auth> login(@RequestBody AuthRequest authRequest) {
-        Optional<User> byUsername = userRepository.findByName(authRequest.getUsername());
+        Optional<User> byUsername = userRepository.findByName(authRequest.getName());
         if (!byUsername.isPresent()) {
             logger.warn("Auth failed, user not found");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
