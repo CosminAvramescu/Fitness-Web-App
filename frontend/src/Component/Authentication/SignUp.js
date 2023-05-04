@@ -24,6 +24,7 @@ class SignUp extends Component {
         height: 0,
         weight: 0,
         birthday: '',
+        certificate: null
     }
 
     nextStep = (e) => {
@@ -71,7 +72,8 @@ class SignUp extends Component {
             this.state.age,
             this.state.height,
             this.state.weight,
-            this.state.birthday
+            this.state.birthday,
+            this.state.certificate
         )
 
         let url = "http://localhost:8082/user/addUser"
@@ -90,12 +92,12 @@ class SignUp extends Component {
     render() {
         const {
             step, firstName, lastName, username, email, contactPhone, password, confirmPassword,
-            role, county, city, street, age, height, weight, birthday
+            role, county, city, street, age, height, weight, birthday, certificate
         } = this.state;
 
         const inputValues = {
             firstName, lastName, email, username, contactPhone, password, confirmPassword,
-            role, county, city, street, age, height, weight, birthday
+            role, county, city, street, age, height, weight, birthday, certificate
         };
 
         switch (step) {
@@ -185,7 +187,17 @@ class SignUp extends Component {
                     </Form.Group>
                 </Row>
 
-                <Row>
+                {this.state.role === 1 ?
+                    <Form.Group as={Col} className="mb-4" controlId="formBasicCertificate">
+                        <Form.Label>Certificate</Form.Label>
+                        <Form.Control type="file"
+                                      defaultValue={null}
+                                      required onChange={this.handleChange}
+                                      name="certificate"/>
+                    </Form.Group> : null
+                }
+
+                <Row className="mb-4">
                     <Col xs={6}>
                         <Button variant="primary" style={{width: '100%'}} type="submit"
                                 onClick={this.handleCreateAccount}>
@@ -290,7 +302,8 @@ class User {
                 age,
                 height,
                 weight,
-                birthday) {
+                birthday,
+                certificate) {
         this.role = role;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -305,6 +318,7 @@ class User {
         this.height = height;
         this.weight = weight;
         this.birthday = birthday;
+        this.certificate = certificate;
     }
 
     toString() {
@@ -322,5 +336,6 @@ class User {
         console.log("Height:", this.height);
         console.log("Weight:", this.weight);
         console.log("Birthday:", this.birthday);
+        console.log("Certificate:", this.certificate);
     }
 }
