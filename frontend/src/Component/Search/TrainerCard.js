@@ -6,12 +6,26 @@ import {Stack} from "react-bootstrap";
 import RatingStar from "../Utilities/RatingStar";
 import {CgGym} from "react-icons/cg";
 import {FaAppleAlt, FaMapMarkerAlt} from "react-icons/fa";
+import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai";
 
 //TODO:Delete Later
 import testImage from "../../Assets/first_chanV4.png";
 
 class TrainerCard extends Component {
+    state = {
+        expand: false
+    }
+
+    handleExpand = (event) => {
+        event.preventDefault();
+        const expandState = this.state.expand
+        this.setState({
+            expand: !expandState
+        });
+    }
+
     render() {
+
         return (
             <Container fluid="True" className="m-5" style={{backgroundColor: "#212121", color: "#FAFAFA"}}>
                 <Row className="align-items-center">
@@ -61,10 +75,22 @@ class TrainerCard extends Component {
                             </div>
                         </Stack>
                     </Col>
+
+                    <Col className='col-auto mb-5'>
+                        {this.state.expand === false ? <AiFillCaretDown onClick={this.handleExpand}/> :
+                            <AiFillCaretUp onClick={this.handleExpand}/>}
+                    </Col>
                 </Row>
+
+                {this.state.expand === true ?
+                    <div className="p-3">Greetings, aspiring fitness enthusiasts! I am Coach Dynamo, the epitome of physical perfection
+                        and the embodiment of unparalleled strength. With bulging muscles and an indomitable spirit, I
+                        am here to transform you from mere mortals into mighty warriors of fitness!</div> :
+                    <div></div>}
             </Container>
         )
     }
+
 };
 
 export default TrainerCard;
