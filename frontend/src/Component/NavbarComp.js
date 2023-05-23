@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import UploadFile from "./UploadFile/UploadFile";
-import TrainerCard from "./Search/TrainerCard";
+import Search from "./Search/Search";
 
 class NavbarComp extends Component {
     render() {
@@ -43,7 +43,7 @@ class NavbarComp extends Component {
                         <Route path="/signIn" element={<Authentication value={1} />} />
                         <Route path="/signUp" element={<Authentication value={0} />} />
                         <Route path="/UploadFile" element={<UploadFile />} />
-                        <Route path="/Search" element={<TrainerCard />} />
+                        <Route path="/Search" element={<Search />} />
                         <Route path="*" element={<Homepage />} />
                     </Routes>
                 </div>
