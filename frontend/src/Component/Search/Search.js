@@ -27,6 +27,11 @@ class Search extends Component {
                                       variant="default"
                                       style={{
                                           color: this.state.step === 1 ? "green" : "gray",
+                                          backgroundColor: 'transparent',
+                                          border: 'none',
+                                          borderBottom: '3px solid',
+                                          borderRadius: '0',
+                                          boxShadow: 'none',
                                       }}
                                       value={1}
                                       className="w-100">
@@ -36,6 +41,11 @@ class Search extends Component {
                         <ToggleButton id="tbg-workout" variant="default"
                                       style={{
                                           color: this.state.step === 2 ? "green" : "gray",
+                                          backgroundColor: 'transparent',
+                                          border: 'none',
+                                          borderBottom: '3px solid',
+                                          borderRadius: '0',
+                                          boxShadow: 'none',
                                       }} value={2} className="w-100">
                             WORKOUT
                         </ToggleButton>
@@ -43,6 +53,11 @@ class Search extends Component {
                         <ToggleButton id="tbg-nutritions" variant="default"
                                       style={{
                                           color: this.state.step === 3 ? "green" : "gray",
+                                          backgroundColor: 'transparent',
+                                          border: 'none',
+                                          borderBottom: '3px solid',
+                                          borderRadius: '0',
+                                          boxShadow: 'none',
                                       }} value={3} className="w-100">
                             NUTRITIONS
                         </ToggleButton>
