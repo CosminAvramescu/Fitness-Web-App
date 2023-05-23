@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import Button from "react-bootstrap/Button";
 
 const RatingStar = () => {
-        const [rating, setRating] = useState(0);
-        const [hover, setHover] = useState(0);
+        const [rating, setRating] = useState(1);
+        const [hover, setHover] = useState(1);
         return (
             <div>
                 {[...Array(5)].map((star, index) => {
