@@ -10,6 +10,7 @@ import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai";
 
 //TODO:Delete Later
 import testImage from "../../Assets/first_chanV4.png";
+import Button from "react-bootstrap/Button";
 
 class TrainerCard extends Component {
     state = {
@@ -77,9 +78,14 @@ class TrainerCard extends Component {
                     </Col>
 
                     <Col className='col-auto mb-5'>
-                        {this.state.expand === false ?
-                            <AiFillCaretDown style={{color: 'green'}} onClick={this.handleExpand}/> :
-                            <AiFillCaretUp style={{color: 'green'}} onClick={this.handleExpand}/>}
+                        <Button onClick={this.handleExpand} style={{
+                            backgroundColor: 'transparent',
+                            border: 'none',
+                            boxShadow: 'none'
+                        }}>
+                            {this.state.expand === false ? <AiFillCaretDown style={{color: 'green'}}/> :
+                                <AiFillCaretUp style={{color: 'green'}}/>}
+                        </Button>
                     </Col>
                 </Row>
 

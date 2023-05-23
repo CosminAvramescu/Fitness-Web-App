@@ -4,12 +4,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {Stack} from "react-bootstrap";
 import RatingStar from "../Utilities/RatingStar";
-import {CgGym} from "react-icons/cg";
-import {FaAppleAlt, FaMapMarkerAlt, FaMoneyBillWaveAlt} from "react-icons/fa";
+import {FaMoneyBillWaveAlt} from "react-icons/fa";
 import {AiFillCaretDown, AiFillCaretUp, AiFillCalendar} from "react-icons/ai";
 
 //TODO:Delete Later
 import testImage from "../../Assets/first_chanV4.png";
+import Button from "react-bootstrap/Button";
 
 class TrainerCard extends Component {
     state = {
@@ -49,7 +49,7 @@ class TrainerCard extends Component {
                     </Col>
 
                     <Col className="m-2">
-                        <Stack fluid >
+                        <Stack fluid>
                             <Row className="m-2 align-items-center">
                                 <Col><AiFillCalendar className='h2' style={{color: 'green'}}/></Col>
                                 <Col>Weeks</Col>
@@ -82,9 +82,14 @@ class TrainerCard extends Component {
                     </Col>
 
                     <Col className='col-auto mb-5'>
-                        {this.state.expand === false ?
-                            <AiFillCaretDown style={{color: 'green'}} onClick={this.handleExpand}/> :
-                            <AiFillCaretUp style={{color: 'green'}} onClick={this.handleExpand}/>}
+                        <Button onClick={this.handleExpand} style={{
+                            backgroundColor: 'transparent',
+                            border: 'none',
+                            boxShadow: 'none'
+                        }}>
+                            {this.state.expand === false ? <AiFillCaretDown style={{color: 'green'}}/> :
+                                <AiFillCaretUp style={{color: 'green'}}/>}
+                        </Button>
                     </Col>
                 </Row>
 
