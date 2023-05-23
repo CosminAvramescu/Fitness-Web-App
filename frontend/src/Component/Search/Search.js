@@ -4,6 +4,7 @@ import {InputGroup, ToggleButton, ToggleButtonGroup} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import {BiSearch} from 'react-icons/bi';
 import Container from "react-bootstrap/Container";
+import WNCard from "./WNCard";
 
 class Search extends Component {
     state = {
@@ -22,15 +23,27 @@ class Search extends Component {
                 <Container className={'p-1'}>
                     <ToggleButtonGroup type="radio" className="mb-3 d-flex" name="filter" defaultValue={this.state.step}
                                        onChange={this.handleStepChange}>
-                        <ToggleButton id="tbg-trainer" variant="dark" value={1} className="w-100">
+                        <ToggleButton id="tbg-trainer"
+                                      variant="default"
+                                      style={{
+                                          color: this.state.step === 1 ? "green" : "gray",
+                                      }}
+                                      value={1}
+                                      className="w-100">
                             TRAINER
                         </ToggleButton>
 
-                        <ToggleButton id="tbg-workout" variant="dark" value={2} className="w-100">
+                        <ToggleButton id="tbg-workout" variant="default"
+                                      style={{
+                                          color: this.state.step === 2 ? "green" : "gray",
+                                      }} value={2} className="w-100">
                             WORKOUT
                         </ToggleButton>
 
-                        <ToggleButton id="tbg-nutritions" variant="dark" value={3} className="w-100">
+                        <ToggleButton id="tbg-nutritions" variant="default"
+                                      style={{
+                                          color: this.state.step === 3 ? "green" : "gray",
+                                      }} value={3} className="w-100">
                             NUTRITIONS
                         </ToggleButton>
                     </ToggleButtonGroup>
@@ -38,8 +51,26 @@ class Search extends Component {
 
                 <Container className="p-0">
                     <InputGroup>
-                        <Form.Control className="me-auto" placeholder="Search..."/>
-                        <InputGroup.Text id="search-icon"><BiSearch/></InputGroup.Text>
+                        <Form.Control className="me-auto" placeholder="Search..."
+                                      style={{
+                                          color: 'gray',
+                                          backgroundColor: 'transparent',
+                                          border: 'none',
+                                          borderBottom: '3px solid',
+                                          borderRadius: '0',
+                                          boxShadow: 'none',
+                                      }}/>
+                        <InputGroup.Text id="search-icon"
+                                         style={{
+                                             color: 'gray',
+                                             backgroundColor: 'transparent',
+                                             boxShadow: 'none',
+                                             border: 'none',
+                                             borderBottom: '3px solid',
+                                             borderRadius: '0',
+                                         }}>
+                            <BiSearch style={{color: 'gray'}}/>
+                        </InputGroup.Text>
                     </InputGroup>
                 </Container>
 
@@ -73,13 +104,21 @@ class Search extends Component {
 
     renderWorkouts() {
         return (
-            <div>Hello</div>
+            [...Array(5)].map(() => {
+                return (
+                    <WNCard auto/>
+                );
+            })
         )
     }
 
     renderNutritions() {
         return (
-            <div>Hello</div>
+            [...Array(5)].map(() => {
+                return (
+                    <WNCard auto/>
+                );
+            })
         )
     }
 }

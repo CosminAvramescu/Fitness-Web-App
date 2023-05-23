@@ -5,8 +5,8 @@ import Col from "react-bootstrap/Col";
 import {Stack} from "react-bootstrap";
 import RatingStar from "../Utilities/RatingStar";
 import {CgGym} from "react-icons/cg";
-import {FaAppleAlt, FaMapMarkerAlt} from "react-icons/fa";
-import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai";
+import {FaAppleAlt, FaMapMarkerAlt, FaMoneyBillWaveAlt} from "react-icons/fa";
+import {AiFillCaretDown, AiFillCaretUp, AiFillCalendar} from "react-icons/ai";
 
 //TODO:Delete Later
 import testImage from "../../Assets/first_chanV4.png";
@@ -49,30 +49,35 @@ class TrainerCard extends Component {
                     </Col>
 
                     <Col className="m-2">
-                        <Stack fluid>
+                        <Stack fluid >
                             <Row className="m-2 align-items-center">
-                                <Col><CgGym className='h2' style={{color: 'green'}}/></Col>
-                                <Col>Workouts</Col>
-                                <Col className="h5" style={{color: 'green'}}>35</Col>
+                                <Col><AiFillCalendar className='h2' style={{color: 'green'}}/></Col>
+                                <Col>Weeks</Col>
+                                <Col className="h5" style={{color: 'green'}}>12</Col>
                             </Row>
 
                             <Row className="m-2">
-                                <Col><FaAppleAlt className='h3' style={{color: 'green'}}/></Col>
-                                <Col>Nutrition Plans</Col>
-                                <Col className="h5" style={{color: 'green'}}>35</Col>
+                                <Col><FaMoneyBillWaveAlt className='h3' style={{color: 'green'}}/></Col>
+                                <Col>Price</Col>
+                                <Col className="h5" style={{color: 'green'}}>200 lei</Col>
                             </Row>
                         </Stack>
                     </Col>
 
-                    <Col className="m-2 align-items-center">
-                        <Stack>
-                            <Row className="m-2 align-items-center">
-                                <Col className='col-auto'><FaMapMarkerAlt className='h3'
-                                                                          style={{color: 'green'}}/></Col>
-                                <Col className='col-auto'>Gym Address</Col>
+                    <Col>
+                        <Stack className="align-items-center">
+                            <Row className="m-2">
+                                <Col className='col-auto'>
+                                    <img
+                                        src={testImage}
+                                        alt="Trainer"
+                                        className="rounded-circle"
+                                        style={{width: '50px', height: '50px'}}
+                                    />
+                                </Col>
+                                <Col className='col-auto h2'>Trainer</Col>
                             </Row>
-                            <div className='col-auto'> Bucharest, Sector 6, Splaiul Independentei, nr 290
-                            </div>
+                            <div className='h6' style={{color: 'green'}}> INSERT LONG NAME HERE</div>
                         </Stack>
                     </Col>
 
