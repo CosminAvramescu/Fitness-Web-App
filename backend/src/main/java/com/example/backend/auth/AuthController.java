@@ -19,6 +19,7 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
+@CrossOrigin(origins="*")
 public class AuthController {
     private final UserService userService;
     private final UserRepository userRepository;
@@ -31,6 +32,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<Auth> login(@RequestBody User user) {
+        System.out.println("cmz");
         Optional<User> byEmail = userRepository.findByEmail(user.getEmail());
         if (!byEmail.isPresent()) {
             logger.warn("Auth failed, user not found");

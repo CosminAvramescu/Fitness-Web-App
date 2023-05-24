@@ -8,6 +8,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import UploadFile from "./UploadFile/UploadFile";
+import ImageComponent from "./Image/Image";
 
 class NavbarComp extends Component {
     render() {
@@ -51,7 +52,9 @@ class NavbarComp extends Component {
                         <Route path="/signIn" element={<Authentication value={1} />} />
                         <Route path="/signUp" element={<Authentication value={0} />} />
                         <Route path="/UploadFile" element={<UploadFile />} />
+                        <Route path="/Image" element={<ImageComponent />} />
                         <Route path="*" element={<Homepage />} />
+
                     </Routes>
                 </div>
             </BrowserRouter>

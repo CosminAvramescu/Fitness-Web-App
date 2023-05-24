@@ -1,8 +1,11 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.WorkoutDTO;
+import com.example.backend.mapper.WorkoutMapper;
 import com.example.backend.model.FileWorkout;
 import com.example.backend.model.User;
 import com.example.backend.model.Workout;
+import com.example.backend.repository.FileWorkoutRepository;
 import com.example.backend.service.WorkoutService;
 import lombok.RequiredArgsConstructor;
 //import org.apache.commons.io.FileUtils;
@@ -21,6 +24,10 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class WorkoutController {
     private final WorkoutService workoutService;
+
+    private final WorkoutMapper workoutMapper;
+
+    private final FileWorkoutRepository fileWorkoutRepository;
 
     @GetMapping
     public List<Workout> getAllWorkouts(){
@@ -42,8 +49,8 @@ public class WorkoutController {
         return workoutService.addWorkout(workout);
     }
 
-    @PutMapping("upload/{userId}")
-    public Workout addFiles(@RequestParam("files") List<MultipartFile> files, @PathVariable Integer workoutId){
+    @PutMapping("upload/{workoutId}")
+    public Workout addFiles(@RequestParam("files") List<MultipartFile> files, @PathVariable("workoutId") Integer workoutId){
         Workout workout=workoutService.getWorkoutById(workoutId);
 
         List<FileWorkout> fileWorkouts=new ArrayList<>();
@@ -56,35 +63,25 @@ public class WorkoutController {
             }
             fw.setFilename(file.getOriginalFilename());
             fileWorkouts.add(fw);
+            fileWorkoutRepository.save(fw);
         }
         workout.setFileWorkouts(fileWorkouts);
         return workoutService.addWorkout(workout);
     }
 
     @GetMapping("/download/{id}")
-    public ResponseEntity<byte[]> downloadFile(@PathVariable("id") Integer workoutId) {
-        Workout workout=workoutService.getWorkoutById(workoutId);
+    public ResponseEntity<byte[]> getImage(@PathVariable("id") Integer id) {
+        // Retrieve the image byte array based on the provided ID
+        List<FileWorkout> fileWorkouts = workoutService.getWorkoutById(id).getFileWorkouts();
+        byte[] imageBytes=fileWorkouts.get(0).getFileWorkout();
 
-        for(FileWorkout fw: workout.getFileWorkouts()){
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_PDF);
+        // Set the appropriate headers for the image response
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_JPEG); // Adjust the media type based on your image format
+        headers.setContentLength(imageBytes.length);
 
-            headers.setContentDisposition(ContentDisposition.attachment()
-                    .filename(fw.getFilename())
-                    .build());
-            byte[] certificate= fw.getFileWorkout();
-            String home = System.getProperty("user.home");
-            String filePath = home + "/Downloads/Workout" + fw.getFilename();
-
-//            try {
-//                FileUtils.writeByteArrayToFile(new File(filePath), certificate);
-//            } catch (IOException e) {
-//                throw new RuntimeException("Error saving file to local path", e);
-//            }
-
-            return new ResponseEntity<>(fw.getFileWorkout(), headers, HttpStatus.OK);
-        }
-        return null;
+        // Return the image byte array as the response body with the appropriate headers
+        return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
     }
 
     @GetMapping("allFileWorkouts/{workoutId}")
@@ -96,5 +93,10 @@ public class WorkoutController {
     public void setFileWorkout(@PathVariable("workoutId") Integer workoutId,
                                @PathVariable("fileWorkoutId") Integer fileWorkoutId){
         workoutService.setFileWorkout(workoutId, fileWorkoutId);
+    }
+
+    @GetMapping("all")
+    public List<WorkoutDTO> getAll(){
+        return workoutMapper.toListWorkoutDTO(workoutService.getAll());
     }
 }

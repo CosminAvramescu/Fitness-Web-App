@@ -107,4 +107,16 @@ public class UserService{
 
         return userRepository.save(user);
     }
+
+    public List<User> getAll(){
+        return userRepository.findAll();
+    }
+
+    public List<Workout> getAllWorkoutsByUserId(Integer id){
+        return userRepository.getUserById(id).getWorkoutList();
+    }
+
+    public int countWorkoutsByUserId(Integer id){
+        return userRepository.getUserById(id).getWorkoutList().size();
+    }
 }
