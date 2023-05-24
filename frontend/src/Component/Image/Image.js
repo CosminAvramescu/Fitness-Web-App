@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const ImageComponent = () => {
+const ImageComponent = (props) => {
     const [imageSrc, setImageSrc] = useState('');
 
     useEffect(() => {
@@ -26,7 +26,9 @@ const ImageComponent = () => {
         fetchImage();
     }, []);
 
-    return <img src={imageSrc} alt="Image" />;
+    return <img src={imageSrc} alt="Image"
+                className={"rounded-circle"}
+                style={{width:props.width, height:props.height}}/>;
 };
 
 export default ImageComponent;

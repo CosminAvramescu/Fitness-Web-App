@@ -11,6 +11,7 @@ import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai";
 
 //TODO:Delete Later
 import testImage from "../../Assets/first_chanV4.png";
+import ImageComponent from "../Image/Image";
 
 class TrainerCard extends Component {
     state = {
@@ -33,12 +34,7 @@ class TrainerCard extends Component {
                     <Col>
                         <Row className="align-items-center">
                             <Col className="m-2">
-                                <img
-                                    src={testImage}
-                                    alt="Trainer"
-                                    className="rounded-circle"
-                                    style={{width: '100px', height: '100px'}}
-                                />
+                                <ImageComponent width={'100px'} height={'100px'}/>
                             </Col>
                             <Col className="m-2">
                                 <Stack>

@@ -10,6 +10,7 @@ import {AiFillCaretDown, AiFillCaretUp, AiFillCalendar} from "react-icons/ai";
 //TODO:Delete Later
 import testImage from "../../Assets/first_chanV4.png";
 import Button from "react-bootstrap/Button";
+import ImageComponent from "../Image/Image";
 
 class TrainerCard extends Component {
     state = {
@@ -32,12 +33,7 @@ class TrainerCard extends Component {
                     <Col>
                         <Row className="align-items-center">
                             <Col className="m-2">
-                                <img
-                                    src={testImage}
-                                    alt="Trainer"
-                                    className="rounded-circle"
-                                    style={{width: '100px', height: '100px'}}
-                                />
+                                <ImageComponent width={'100px'} height={'100px'}/>
                             </Col>
                             <Col className="m-2">
                                 <Stack>
@@ -68,12 +64,7 @@ class TrainerCard extends Component {
                         <Stack className="align-items-center">
                             <Row className="m-2">
                                 <Col className='col-auto'>
-                                    <img
-                                        src={testImage}
-                                        alt="Trainer"
-                                        className="rounded-circle"
-                                        style={{width: '50px', height: '50px'}}
-                                    />
+                                    <ImageComponent width={'50px'} height={'50px'}/>
                                 </Col>
                                 <Col className='col-auto h2'>Trainer</Col>
                             </Row>
