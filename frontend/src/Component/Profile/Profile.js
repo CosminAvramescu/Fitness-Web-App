@@ -5,11 +5,12 @@ import Container from "react-bootstrap/Container";
 import {Stack} from "react-bootstrap";
 import ImageComponent from "../Image/Image";
 import ProfileMenu from "./ProfileMenu";
-import { Navigate } from "react-router-dom";
+import {Navigate} from "react-router-dom";
+import ContentMenu from "./ContentMenu";
 
 class Profile extends Component {
     state = {
-        step : 1,
+        step: 1,
         canLogout: false
     }
 
@@ -22,12 +23,20 @@ class Profile extends Component {
     }
 
     handleLogout = async () => {
-        this.setState({ canLogout: true })
+        this.setState({canLogout: true})
+    }
+
+    handleSaveChanges = async () => {
+        console.log("Changes Saved")
+    }
+
+    handleCancelChanges = () => {
+        console.log("Cancel")
     }
 
     checkChangePage() {
         if (this.state.canLogout === true) {
-            return (<Navigate to='/home' replace={true} />)
+            return (<Navigate to='/home' replace={true}/>)
         }
     }
 
@@ -48,7 +57,9 @@ class Profile extends Component {
                         backgroundColor: "#212121",
                         color: "#FAFAFA"
                     }}>
-                        Content
+                        <ContentMenu step={this.state.step}
+                                     saveChanges={this.handleSaveChanges}
+                                     cancelChanges={this.handleCancelChanges()}/>
                     </Col>
                 </Row>
             </Container>
@@ -56,11 +67,11 @@ class Profile extends Component {
     }
 
     renderMenu() {
-        return(
+        return (
             <Stack>
                 <Row>
                     <Col>
-                        <ImageComponent width={'75px'} height={'75px'} />
+                        <ImageComponent width={'75px'} height={'75px'}/>
                     </Col>
 
                     <Col className="m-1 align-items-center">
@@ -79,7 +90,9 @@ class Profile extends Component {
                     </Col>
                 </Row>
 
-                <ProfileMenu step={this.state.step} handleStep={this.handleStepChange} handleLogout={this.handleLogout}/>
+                <ProfileMenu step={this.state.step}
+                             handleStep={this.handleStepChange}
+                             handleLogout={this.handleLogout}/>
             </Stack>
         );
     }
