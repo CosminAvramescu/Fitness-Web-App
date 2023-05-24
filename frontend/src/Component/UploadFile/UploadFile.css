@@ -1,12 +1,11 @@
 #upload-button {
     width: 100%;
     justify-content: center;
-    background-color: lightcyan;
+    background-color: darkgreen;
     height: 50px;
     border: none;
     border-top: 1px solid black;
 }
-
 #upload-button:hover{
     opacity: 80%;
 }
@@ -18,12 +17,13 @@
 }
 
 #wrapper-card{
+    color: white;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: lightskyblue;
+    background-color: #202020;
 }
 
 #wrapper{

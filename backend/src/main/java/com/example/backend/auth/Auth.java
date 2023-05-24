@@ -1,5 +1,6 @@
 package com.example.backend.auth;
 
+import com.example.backend.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,5 +13,5 @@ import lombok.ToString;
 public class Auth {
     private Long userId;
     private String username;
-    private Enum appUserRole;
+    private Role role;
 }

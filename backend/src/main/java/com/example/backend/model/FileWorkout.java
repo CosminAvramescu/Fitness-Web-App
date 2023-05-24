@@ -24,4 +24,7 @@ public class FileWorkout {
 
     @ManyToOne
     Workout workout;
+
+    @ManyToOne
+    NutritionPlan nutritionPlan;
 }
