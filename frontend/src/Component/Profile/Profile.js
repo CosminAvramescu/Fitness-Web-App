@@ -54,7 +54,7 @@ class Profile extends Component {
                     </Col>
 
                     <Col className="m-5" style={{
-                        backgroundColor: "#212121",
+                        backgroundColor: this.state.step > 1 ? "#111111" : "#212121",
                         color: "#FAFAFA"
                     }}>
                         <ContentMenu step={this.state.step}

@@ -28,7 +28,7 @@ class TrainerCard extends Component {
     render() {
 
         return (
-            <Container fluid="True" className="m-5" style={{backgroundColor: "#212121", color: "#FAFAFA"}}>
+            <Container fluid="True" style={{backgroundColor: "#212121", color: "#FAFAFA"}}>
                 <Row className="align-items-center">
                     <Col>
                         <Row className="align-items-center">

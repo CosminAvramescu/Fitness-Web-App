@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import TrainerCard from "./TrainerCard";
-import {InputGroup, ToggleButton, ToggleButtonGroup} from "react-bootstrap";
+import {InputGroup, Stack, ToggleButton, ToggleButtonGroup} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import {BiSearch} from 'react-icons/bi';
 import Container from "react-bootstrap/Container";
@@ -109,31 +109,37 @@ class Search extends Component {
 
     renderTrainers() {
         return (
-            [...Array(5)].map(() => {
-                return (
-                    <TrainerCard auto/>
-                );
-            })
+            <Stack gap={5} className={"m-5"}>
+                {[...Array(5)].map(() => {
+                    return (
+                        <TrainerCard auto/>
+                    );
+                })}
+            </Stack>
         )
     }
 
     renderWorkouts() {
         return (
-            [...Array(5)].map(() => {
-                return (
-                    <WNCard auto/>
-                );
-            })
+            <Stack gap={5} className={"m-5"}>
+                {[...Array(5)].map(() => {
+                    return (
+                        <WNCard auto/>
+                    );
+                })}
+            </Stack>
         )
     }
 
     renderNutritions() {
         return (
-            [...Array(5)].map(() => {
-                return (
-                    <WNCard auto/>
-                );
-            })
+            <Stack gap={5} className={"m-5"}>
+                {[...Array(5)].map(() => {
+                    return (
+                        <WNCard auto/>
+                    );
+                })}
+            </Stack>
         )
     }
 }

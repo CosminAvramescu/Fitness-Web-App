@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import {BsFillPersonFill} from "react-icons/bs";
-import {InputGroup} from "react-bootstrap";
+import {InputGroup, Stack} from "react-bootstrap";
 import {AiFillPhone, AiOutlineFieldNumber, AiTwotoneMail} from "react-icons/ai";
 import {BiSearch, BiWorld} from "react-icons/bi";
 import {MdDateRange, MdLocationCity, MdStreetview} from "react-icons/md";
@@ -30,105 +30,111 @@ class ContentMenu extends Component {
 
     renderTrainers() {
         return (
-            <Container className={"p-3"}>
-                <InputGroup>
-                    <Form.Control className="me-auto" placeholder="Search..."
-                                  style={{
-                                      color: 'gray',
-                                      backgroundColor: 'transparent',
-                                      border: 'none',
-                                      borderBottom: '3px solid',
-                                      borderRadius: '0',
-                                      boxShadow: 'none',
-                                  }}/>
-                    <InputGroup.Text id="search-icon"
-                                     style={{
-                                         color: 'gray',
-                                         backgroundColor: 'transparent',
-                                         boxShadow: 'none',
-                                         border: 'none',
-                                         borderBottom: '3px solid',
-                                         borderRadius: '0',
-                                     }}>
-                        <BiSearch style={{color: 'gray'}}/>
-                    </InputGroup.Text>
-                </InputGroup>
+            <Container fluid="True">
+                <Stack gap={4}>
+                    <InputGroup>
+                        <Form.Control className="me-auto" placeholder="Search..."
+                                      style={{
+                                          color: 'gray',
+                                          backgroundColor: 'transparent',
+                                          border: 'none',
+                                          borderBottom: '3px solid',
+                                          borderRadius: '0',
+                                          boxShadow: 'none',
+                                      }}/>
+                        <InputGroup.Text id="search-icon"
+                                         style={{
+                                             color: 'gray',
+                                             backgroundColor: 'transparent',
+                                             boxShadow: 'none',
+                                             border: 'none',
+                                             borderBottom: '3px solid',
+                                             borderRadius: '0',
+                                         }}>
+                            <BiSearch style={{color: 'gray'}}/>
+                        </InputGroup.Text>
+                    </InputGroup>
 
-                {[...Array(5)].map(() => {
-                    return (
-                        <TrainerCard auto/>
-                    );
-                })}
+                    {[...Array(5)].map(() => {
+                        return (
+                            <TrainerCard/>
+                        );
+                    })}
+                </Stack>
             </Container>
         )
     }
 
     renderWorkouts() {
         return(
-            <Container className={"p-3"}>
-                <InputGroup>
-                    <Form.Control className="me-auto" placeholder="Search..."
-                                  style={{
-                                      color: 'gray',
-                                      backgroundColor: 'transparent',
-                                      border: 'none',
-                                      borderBottom: '3px solid',
-                                      borderRadius: '0',
-                                      boxShadow: 'none',
-                                  }}/>
-                    <InputGroup.Text id="search-icon"
-                                     style={{
-                                         color: 'gray',
-                                         backgroundColor: 'transparent',
-                                         boxShadow: 'none',
-                                         border: 'none',
-                                         borderBottom: '3px solid',
-                                         borderRadius: '0',
-                                     }}>
-                        <BiSearch style={{color: 'gray'}}/>
-                    </InputGroup.Text>
-                </InputGroup>
+            <Container fluid="True">
+                <Stack gap={4}>
+                    <InputGroup>
+                        <Form.Control className="me-auto" placeholder="Search..."
+                                      style={{
+                                          color: 'gray',
+                                          backgroundColor: 'transparent',
+                                          border: 'none',
+                                          borderBottom: '3px solid',
+                                          borderRadius: '0',
+                                          boxShadow: 'none',
+                                      }}/>
+                        <InputGroup.Text id="search-icon"
+                                         style={{
+                                             color: 'gray',
+                                             backgroundColor: 'transparent',
+                                             boxShadow: 'none',
+                                             border: 'none',
+                                             borderBottom: '3px solid',
+                                             borderRadius: '0',
+                                         }}>
+                            <BiSearch style={{color: 'gray'}}/>
+                        </InputGroup.Text>
+                    </InputGroup>
 
-                {[...Array(5)].map(() => {
-                    return (
-                        <WNCard auto />
-                    );
-                })}
+                    {[...Array(5)].map(() => {
+                        return (
+                            <WNCard/>
+                        );
+                    })}
+                </Stack>
             </Container>
         )
     }
 
     renderNutrition() {
         return(
-            <Container className={"p-3"}>
-                <InputGroup>
-                    <Form.Control className="me-auto" placeholder="Search..."
-                                  style={{
-                                      color: 'gray',
-                                      backgroundColor: 'transparent',
-                                      border: 'none',
-                                      borderBottom: '3px solid',
-                                      borderRadius: '0',
-                                      boxShadow: 'none',
-                                  }}/>
-                    <InputGroup.Text id="search-icon"
-                                     style={{
-                                         color: 'gray',
-                                         backgroundColor: 'transparent',
-                                         boxShadow: 'none',
-                                         border: 'none',
-                                         borderBottom: '3px solid',
-                                         borderRadius: '0',
-                                     }}>
-                        <BiSearch style={{color: 'gray'}}/>
-                    </InputGroup.Text>
-                </InputGroup>
+            <Container fluid="True">
+                <Stack gap={4}>
+                    <InputGroup>
+                        <Form.Control className="me-auto" placeholder="Search..."
+                                      style={{
+                                          color: 'gray',
+                                          backgroundColor: 'transparent',
+                                          border: 'none',
+                                          borderBottom: '3px solid',
+                                          borderRadius: '0',
+                                          boxShadow: 'none',
+                                      }}/>
+                        <InputGroup.Text id="search-icon"
+                                         style={{
+                                             color: 'gray',
+                                             backgroundColor: 'transparent',
+                                             boxShadow: 'none',
+                                             border: 'none',
+                                             borderBottom: '3px solid',
+                                             borderRadius: '0',
+                                         }}>
+                            <BiSearch style={{color: 'gray'}}/>
+                        </InputGroup.Text>
+                    </InputGroup>
 
-                {[...Array(5)].map(() => {
-                    return (
-                        <WNCard auto />
-                    );
-                })}
+                    {[...Array(5)].map(() => {
+                        return (
+                            <WNCard/>
+                        );
+                    })}
+                </Stack>
             </Container>
         )
     }
