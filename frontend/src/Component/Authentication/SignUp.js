@@ -87,7 +87,8 @@ class SignUp extends Component {
 
         user.toString()
         console.log(response)
-    }
+
+    };
 
     render() {
         const {
@@ -105,6 +106,8 @@ class SignUp extends Component {
                 return this.renderUserData();
             case 2:
                 return this.renderRoleData();
+            default:
+                return this.renderUserData();
         }
     }
 
