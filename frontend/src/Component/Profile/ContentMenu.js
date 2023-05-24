@@ -6,10 +6,13 @@ import Button from "react-bootstrap/Button";
 import {BsFillPersonFill} from "react-icons/bs";
 import {InputGroup} from "react-bootstrap";
 import {AiFillPhone, AiOutlineFieldNumber, AiTwotoneMail} from "react-icons/ai";
-import {BiWorld} from "react-icons/bi";
+import {BiSearch, BiWorld} from "react-icons/bi";
 import {MdDateRange, MdLocationCity, MdStreetview} from "react-icons/md";
 import {GiBodyHeight, GiWeightScale} from "react-icons/gi";
 import {CgGym} from "react-icons/cg";
+import Container from "react-bootstrap/Container";
+import TrainerCard from "../Search/TrainerCard";
+import WNCard from "../Search/WNCard";
 
 class ContentMenu extends Component {
     render() {
@@ -17,12 +20,117 @@ class ContentMenu extends Component {
             case 1:
                 return this.renderProfileData();
             case 2:
-                return (<div>My Trainers</div>);
+                return this.renderTrainers();
             case 3:
-                return (<div> My Workouts</div>);
+                return this.renderWorkouts();
             case 4:
-                return (<div> My Nutrition Plans</div>);
+                return this.renderNutrition();
         }
+    }
+
+    renderTrainers() {
+        return (
+            <Container className={"p-3"}>
+                <InputGroup>
+                    <Form.Control className="me-auto" placeholder="Search..."
+                                  style={{
+                                      color: 'gray',
+                                      backgroundColor: 'transparent',
+                                      border: 'none',
+                                      borderBottom: '3px solid',
+                                      borderRadius: '0',
+                                      boxShadow: 'none',
+                                  }}/>
+                    <InputGroup.Text id="search-icon"
+                                     style={{
+                                         color: 'gray',
+                                         backgroundColor: 'transparent',
+                                         boxShadow: 'none',
+                                         border: 'none',
+                                         borderBottom: '3px solid',
+                                         borderRadius: '0',
+                                     }}>
+                        <BiSearch style={{color: 'gray'}}/>
+                    </InputGroup.Text>
+                </InputGroup>
+
+                {[...Array(5)].map(() => {
+                    return (
+                        <TrainerCard auto/>
+                    );
+                })}
+            </Container>
+        )
+    }
+
+    renderWorkouts() {
+        return(
+            <Container className={"p-3"}>
+                <InputGroup>
+                    <Form.Control className="me-auto" placeholder="Search..."
+                                  style={{
+                                      color: 'gray',
+                                      backgroundColor: 'transparent',
+                                      border: 'none',
+                                      borderBottom: '3px solid',
+                                      borderRadius: '0',
+                                      boxShadow: 'none',
+                                  }}/>
+                    <InputGroup.Text id="search-icon"
+                                     style={{
+                                         color: 'gray',
+                                         backgroundColor: 'transparent',
+                                         boxShadow: 'none',
+                                         border: 'none',
+                                         borderBottom: '3px solid',
+                                         borderRadius: '0',
+                                     }}>
+                        <BiSearch style={{color: 'gray'}}/>
+                    </InputGroup.Text>
+                </InputGroup>
+
+                {[...Array(5)].map(() => {
+                    return (
+                        <WNCard auto />
+                    );
+                })}
+            </Container>
+        )
+    }
+
+    renderNutrition() {
+        return(
+            <Container className={"p-3"}>
+                <InputGroup>
+                    <Form.Control className="me-auto" placeholder="Search..."
+                                  style={{
+                                      color: 'gray',
+                                      backgroundColor: 'transparent',
+                                      border: 'none',
+                                      borderBottom: '3px solid',
+                                      borderRadius: '0',
+                                      boxShadow: 'none',
+                                  }}/>
+                    <InputGroup.Text id="search-icon"
+                                     style={{
+                                         color: 'gray',
+                                         backgroundColor: 'transparent',
+                                         boxShadow: 'none',
+                                         border: 'none',
+                                         borderBottom: '3px solid',
+                                         borderRadius: '0',
+                                     }}>
+                        <BiSearch style={{color: 'gray'}}/>
+                    </InputGroup.Text>
+                </InputGroup>
+
+                {[...Array(5)].map(() => {
+                    return (
+                        <WNCard auto />
+                    );
+                })}
+            </Container>
+        )
     }
 
     renderProfileData() {
