@@ -61,4 +61,7 @@ public class User {
 
     @ManyToMany
     List<Workout> workoutList=new ArrayList<>();
+
+    @ManyToMany
+    List<NutritionPlan> nutritionPlans=new ArrayList<>();
 }

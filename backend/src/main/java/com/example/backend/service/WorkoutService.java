@@ -58,4 +58,8 @@ public class WorkoutService {
         fileWorkouts.add(fileWorkout);
         workout.setFileWorkouts(fileWorkouts);
     }
+
+    public List<Workout> getAll(){
+        return workoutRepository.findAll();
+    }
 }

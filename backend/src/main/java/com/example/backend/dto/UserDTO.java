@@ -6,24 +6,37 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Data
 @NoArgsConstructor
 public class UserDTO {
 
-    @NonNull
-    private String name;
-    @NonNull
     private Role role;
-    @NonNull
-    private String email;
-    @Lob
-    byte[] certificate;
-    private Integer age;
-    private Float weight;
-    private Float height;
-    private Date birthday;
-    private String sex;
 
+    private String firstName;
+
+    private String lastName;
+
+    private String username;
+
+    private String email;
+
+    private String contactPhone;
+
+    private String password;
+
+    private String county;
+
+    private String city;
+
+    private String street;
+
+    private Integer age;
+
+    private Float height;
+
+    private Float weight;
+
+    private Date birthday;
 }

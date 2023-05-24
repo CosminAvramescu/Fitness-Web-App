@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import UploadFile from "./UploadFile/UploadFile";
+import ImageComponent from "./Image/Image";
 import Search from "./Search/Search";
 import Profile from "./Profile/Profile";
 
@@ -48,6 +49,7 @@ class NavbarComp extends Component {
                         <Route path="/UploadFile" element={<UploadFile/>}/>
                         <Route path="/Search" element={<Search/>}/>
                         <Route path="/Profile" element={<Profile/>}/>
+                        <Route path="/Image" element={<ImageComponent />} />
                         <Route path="*" element={<Homepage/>}/>
                     </Routes>
                 </div>
