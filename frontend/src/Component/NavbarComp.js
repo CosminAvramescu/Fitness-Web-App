@@ -6,15 +6,15 @@ import Authentication from "./Authentication/Authentication";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Form from 'react-bootstrap/Form';
 import UploadFile from "./UploadFile/UploadFile";
+import Search from "./Search/Search";
 
 class NavbarComp extends Component {
     render() {
         return (
             <BrowserRouter>
             <div>
-                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                <Navbar collapseOnSelect expand="lg" variant="dark" style={{ backgroundColor: "#212121"}}>
                     <Container fluid>
                         <Navbar.Brand href="#home">FitnessFussion</Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -24,16 +24,8 @@ class NavbarComp extends Component {
                                 <Nav.Link as={Link} to="/Home">Home</Nav.Link>
                                 <Nav.Link as={Link} to="/Home">About</Nav.Link>
                                 <Nav.Link as={Link} to="/Home">Contact</Nav.Link>
+                                <Nav.Link as={Link} to="/Search">Search</Nav.Link>
                             </Nav>
-
-                            <Form justify className="flex-grow-1 ">
-                                <Form.Control
-                                    type="search"
-                                    placeholder="Search"
-                                    className="me-2"
-                                    aria-label="Search"
-                                />
-                            </Form>
 
                             <Nav className="justify-content-end flex-grow-1 pe-3" activeKey="#Authentication">
                                 <Nav.Link as={Link} to="/signIn">Sing In</Nav.Link>
@@ -51,6 +43,7 @@ class NavbarComp extends Component {
                         <Route path="/signIn" element={<Authentication value={1} />} />
                         <Route path="/signUp" element={<Authentication value={0} />} />
                         <Route path="/UploadFile" element={<UploadFile />} />
+                        <Route path="/Search" element={<Search />} />
                         <Route path="*" element={<Homepage />} />
                     </Routes>
                 </div>

@@ -1,12 +1,12 @@
-document.body.style.backgroundColor = "#202020";
+document.body.style.backgroundColor = "#111111";
 
 function Homepage() {
     return (
-        <div style={{ backgroundColor: '#202020', position: 'relative' }}>
+        <div style={{ backgroundColor: '#111111', position: 'relative' }}>
             <header style={{ color:'white'  }}>
                 <h1> Welcome to our Fitness Web Page!</h1>
             </header>
-            <main  style={{ backgroundColor: '#202020', position: 'relative' }}>
+            <main  style={{ backgroundColor: '#111111', position: 'relative' }}>
                 <header style={{ position: 'absolute', top: 100, left: 150  }}>
                     <h1 style={{  color: 'white', textAlign: 'left' }}>Get <span style={{ color: 'darkgreen' }}>Fit</span></h1>
                     <h1 style={{  color: 'white', textAlign: 'left' }}>Stay <span style={{color: 'darkgreen' }}>Motivated</span></h1>
