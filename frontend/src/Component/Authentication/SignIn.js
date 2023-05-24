@@ -82,7 +82,7 @@ class SignIn extends Component {
                     <Form.Check type="checkbox" label="Remember me"/>
                 </Form.Group>
 
-                <Button variant="primary" onClick={this.login} style={{width: '50%'}} >
+                <Button variant="primary" onClick={this.login} style={{width: '50%'}} type="submit">
                     SIGN IN
                 </Button>
             </Form>

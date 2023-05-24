@@ -9,8 +9,7 @@ import {CgGym} from "react-icons/cg";
 import {FaAppleAlt, FaMapMarkerAlt} from "react-icons/fa";
 import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai";
 
-//TODO:Delete Later
-import testImage from "../../Assets/first_chanV4.png";
+//TODO:Delete Later*
 import ImageComponent from "../Image/Image";
 
 class TrainerCard extends Component {
