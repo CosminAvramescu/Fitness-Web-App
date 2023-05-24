@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {Stack} from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 import RatingStar from "../Utilities/RatingStar";
 import {CgGym} from "react-icons/cg";
 import {FaAppleAlt, FaMapMarkerAlt} from "react-icons/fa";
@@ -10,7 +11,6 @@ import {AiFillCaretDown, AiFillCaretUp} from "react-icons/ai";
 
 //TODO:Delete Later
 import testImage from "../../Assets/first_chanV4.png";
-import Button from "react-bootstrap/Button";
 
 class TrainerCard extends Component {
     state = {
