@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Stack } from 'react-bootstrap';
+import {Stack} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import RatingStar from '../Utilities/RatingStar';
-import { CgGym } from 'react-icons/cg';
-import { FaAppleAlt, FaMapMarkerAlt } from 'react-icons/fa';
-import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
+import {CgGym} from 'react-icons/cg';
+import {FaAppleAlt, FaMapMarkerAlt} from 'react-icons/fa';
+import {AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
 import ImageComponent from '../Image/Image';
 
 const TrainerCard = (props) => {
@@ -19,7 +19,7 @@ const TrainerCard = (props) => {
     };
 
     return (
-        <Container fluid="True" className="m-5" style={{ backgroundColor: '#212121', color: '#FAFAFA' }}>
+        <Container fluid="True" style={{backgroundColor: '#212121', color: '#FAFAFA'}}>
             <Row className="align-items-center">
                 <Col>
                     <Row className="align-items-center">
@@ -30,7 +30,7 @@ const TrainerCard = (props) => {
                             <Stack>
                                 <div className="h4">{props.user.firstName} {props.user.lastName}</div>
                                 <div>
-                                    <RatingStar />
+                                    <RatingStar/>
                                 </div>
                             </Stack>
                         </Col>
@@ -41,20 +41,20 @@ const TrainerCard = (props) => {
                     <Stack fluid>
                         <Row className="m-2 align-items-center">
                             <Col>
-                                <CgGym className="h2" style={{ color: 'green' }} />
+                                <CgGym className="h2" style={{color: 'green'}}/>
                             </Col>
                             <Col>Workouts</Col>
-                            <Col className="h5" style={{ color: 'green' }}>
+                            <Col className="h5" style={{color: 'green'}}>
                                 {props.user.workoutNo}
                             </Col>
                         </Row>
 
                         <Row className="m-2">
                             <Col>
-                                <FaAppleAlt className="h3" style={{ color: 'green' }} />
+                                <FaAppleAlt className="h3" style={{color: 'green'}}/>
                             </Col>
                             <Col>Nutrition Plans</Col>
-                            <Col className="h5" style={{ color: 'green' }}>
+                            <Col className="h5" style={{color: 'green'}}>
                                 {props.user.nutritionNo}
                             </Col>
                         </Row>
@@ -65,7 +65,7 @@ const TrainerCard = (props) => {
                     <Stack>
                         <Row className="m-2 align-items-center">
                             <Col className="col-auto">
-                                <FaMapMarkerAlt className="h3" style={{ color: 'green' }} />
+                                <FaMapMarkerAlt className="h3" style={{color: 'green'}}/>
                             </Col>
                             <Col className="col-auto">Gym Address</Col>
                         </Row>
@@ -77,9 +77,10 @@ const TrainerCard = (props) => {
                 <Col className="col-auto mb-5">
                     <Button
                         onClick={handleExpand}
-                        style={{ backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
+                        style={{backgroundColor: 'transparent', border: 'none', boxShadow: 'none'}}
                     >
-                        {expand === false ? <AiFillCaretDown style={{ color: 'green' }} /> : <AiFillCaretUp style={{ color: 'green' }} />}
+                        {expand === false ? <AiFillCaretDown style={{color: 'green'}}/> :
+                            <AiFillCaretUp style={{color: 'green'}}/>}
                     </Button>
                 </Col>
             </Row>
@@ -89,7 +90,7 @@ const TrainerCard = (props) => {
                     {props.user.personalDescription}
                 </div>
             ) : (
-                <div></div>
+                null
             )}
         </Container>
     );
