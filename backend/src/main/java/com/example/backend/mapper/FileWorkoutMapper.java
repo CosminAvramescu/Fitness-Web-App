@@ -12,7 +12,8 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface FileWorkoutMapper {
     @Mapping(target = "description", source = "description")
-    FileWorkoutDTO toWorkoutDTO(FileWorkout workout);
+    @Mapping(target = "title", source = "title")
+    FileWorkoutDTO toFileWorkoutDTO(FileWorkout fikeWorkout);
 
-    List<FileWorkoutDTO> toListWorkoutDTO(List<FileWorkout> workout);
+    List<FileWorkoutDTO> toListFileWorkoutDTO(List<FileWorkout> fileWorkout);
 }

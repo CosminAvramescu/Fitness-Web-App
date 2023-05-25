@@ -18,6 +18,8 @@ public class FileWorkout {
     @Lob
     byte[] fileWorkout;
 
+    String title;
+
     String filename;
 
     String description;
