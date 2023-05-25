@@ -17,7 +17,6 @@ import axios from "axios";
 
 const WNCard = (props) => {
     const [expand, setExpand] = useState(false);
-    const [role, setRole] = useState(props.role);
 
     const handleExpand = (event) => {
         event.preventDefault();
@@ -31,7 +30,7 @@ const WNCard = (props) => {
                     <Row className="align-items-center">
                         <Col className="m-2">
                             <ImageComponent width={'100px'} height={'100px'} id={props.workout.id}
-                                            path={'workout/downloadW'}/>
+                                            path={props.path}/>
                         </Col>
                         <Col className="m-2">
                             <Stack>

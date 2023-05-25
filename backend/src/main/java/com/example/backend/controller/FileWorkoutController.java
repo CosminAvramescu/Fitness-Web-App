@@ -1,5 +1,7 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.FileWorkoutDTO;
+import com.example.backend.mapper.FileWorkoutMapper;
 import com.example.backend.model.FileWorkout;
 import com.example.backend.service.FileWorkoutService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 public class FileWorkoutController {
     private final FileWorkoutService fileWorkoutService;
 
+    private final FileWorkoutMapper fileWorkoutMapper;
+
     @GetMapping("get/{fileWorkoutId}")
     public FileWorkout getFileWorkoutById(@PathVariable("fileWorkoutId") Integer id){
         return fileWorkoutService.getFileWorkoutById(id);
@@ -23,10 +27,14 @@ public class FileWorkoutController {
     }
 
     @PutMapping("setWorkout/{fileWorkoutId}/{workoutId}")
-    public FileWorkout setWorkout(@PathVariable("fileWorkoutId") Integer fileWorkoutId,
-                                  @PathVariable("workoutId") Integer workoutId){
-        return fileWorkoutService.setWorkout(fileWorkoutId, workoutId);
+    public FileWorkoutDTO setWorkout(@PathVariable("fileWorkoutId") Integer fileWorkoutId,
+                                     @PathVariable("workoutId") Integer workoutId){
+        return fileWorkoutMapper.toFileWorkoutDTO(fileWorkoutService.setWorkout(fileWorkoutId, workoutId));
     }
 
-
+    @PutMapping("setNutrition/{fileWorkoutId}/{nutritionId}")
+    public FileWorkoutDTO setNutrition(@PathVariable("fileWorkoutId") Integer fileWorkoutId,
+                                     @PathVariable("nutritionId") Integer nutritionId){
+        return fileWorkoutMapper.toFileWorkoutDTO(fileWorkoutService.setNutrition(fileWorkoutId, nutritionId));
+    }
 }
