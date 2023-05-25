@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {useState} from 'react';
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -9,6 +9,7 @@ import {Navigate} from "react-router-dom";
 import ContentMenu from "./ContentMenu";
 
 const Profile = () => {
+    const [role, setRole] = useState(1);
     const [step, setStep] = useState(1);
     const [canLogout, setCanLogout] = useState(false);
 
@@ -59,7 +60,7 @@ const Profile = () => {
                     </Col>
                 </Row>
 
-                <ProfileMenu step={step}
+                <ProfileMenu step={step} role={role}
                              handleStep={handleStepChange}
                              handleLogout={handleLogout}/>
             </Stack>
@@ -80,7 +81,7 @@ const Profile = () => {
                 </Col>
 
                 <Col className="m-5" style={{
-                    backgroundColor: this.state.step > 1 ? "#111111" : "#212121",
+                    backgroundColor: step > 1 ? "#111111" : "#212121",
                     color: "#FAFAFA"
                 }}>
                     <ContentMenu step={step}
