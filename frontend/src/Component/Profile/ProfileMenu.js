@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Stack, ToggleButton, ToggleButtonGroup} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import UploadFile from "../UploadFile/UploadFile";
 
 class ProfileMenu extends Component {
 

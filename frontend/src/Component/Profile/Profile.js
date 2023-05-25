@@ -85,6 +85,7 @@ const Profile = () => {
                     color: "#FAFAFA"
                 }}>
                     <ContentMenu step={step}
+                                 role={role}
                                  saveChanges={handleSaveChanges}
                                  cancelChanges={handleCancelChanges}/>
                 </Col>
