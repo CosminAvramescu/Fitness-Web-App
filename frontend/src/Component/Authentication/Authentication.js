@@ -23,7 +23,7 @@ class Authentication extends Component {
         return (
             <Row>
                 <Col>{this.renderSignImage()}</Col>
-                <Col className="m-5"><SignIn/></Col>
+                <Col className="m-auto align-items-center justify-content-center"><SignIn/></Col>
             </Row>
         );
     }
@@ -32,14 +32,16 @@ class Authentication extends Component {
         return (
             <Row>
                 <Col className="m-5"><SignUp/></Col>
-                <Col>{this.renderSignImage()}</Col>
+                <Col className="m-auto align-items-center justify-content-center">{this.renderSignImage()}</Col>
             </Row>
         );
     }
 
     renderSignImage() {
         return (
-            <img src={signImage} alt="Gym"/>
+            <div className={"p-5"}>
+                <img src={signImage} className='img-fluid' alt="Gym"/>
+            </div>
         );
     }
 }

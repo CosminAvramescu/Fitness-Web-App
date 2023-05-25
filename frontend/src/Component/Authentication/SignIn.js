@@ -68,6 +68,12 @@ class SignIn extends Component {
                     <Form.Control type="email"
                                   placeholder="Enter Email"
                                   name="email"
+                                  style={{
+                                      backgroundColor: "#424242",
+                                      border: 'none',
+                                      boxShadow: 'none',
+                                      color: 'white'
+                                  }}
                                   required onChange={this.handleChange}/>
                 </Form.Group>
 
@@ -75,14 +81,20 @@ class SignIn extends Component {
                     <Form.Control type="password"
                                   placeholder="Password"
                                   name="password"
+                                  style={{
+                                      backgroundColor: "#424242",
+                                      border: 'none',
+                                      boxShadow: 'none',
+                                      color: 'white'
+                                  }}
                                   required onChange={this.handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Remember me"/>
+                    <Form.Check className="d-flex" type="checkbox" label="Remember me"/>
                 </Form.Group>
 
-                <Button variant="primary" onClick={this.login} style={{width: '50%'}} type="submit">
+                <Button variant="success" onClick={this.login} style={{width: '50%'}} type="submit">
                     SIGN IN
                 </Button>
             </Form>
