@@ -9,7 +9,7 @@ import {Navigate} from "react-router-dom";
 import ContentMenu from "./ContentMenu";
 
 const Profile = () => {
-    const [role, setRole] = useState(1);
+    const [role, setRole] = useState(0);
     const [step, setStep] = useState(1);
     const [canLogout, setCanLogout] = useState(false);
 

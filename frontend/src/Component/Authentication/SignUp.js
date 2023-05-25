@@ -3,8 +3,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import {ToggleButton, ToggleButtonGroup} from "react-bootstrap";
+import {InputGroup, ToggleButton, ToggleButtonGroup} from "react-bootstrap";
 import axios from "axios";
+import {BsFillPersonFill} from "react-icons/bs";
+import {CgGym} from "react-icons/cg";
+import {AiFillPhone, AiOutlineFieldNumber, AiTwotoneMail} from "react-icons/ai";
+import {RiLockPasswordFill} from "react-icons/ri";
+import {BiWorld} from "react-icons/bi";
+import {MdDateRange, MdLocationCity, MdStreetview} from "react-icons/md";
+import {GiBodyHeight, GiWeightScale} from "react-icons/gi";
+import {FaCertificate} from "react-icons/fa";
 
 class SignUp extends Component {
     state = {
@@ -115,100 +123,224 @@ class SignUp extends Component {
         return (
             <Form>
                 <ToggleButtonGroup type="radio" className="mb-3"
-                                   style={{width: '100%'}}
                                    value={this.state.role}
                                    name="role"
+                                   style={{width: "100%"}}
                                    onChange={this.handleRoleChange}>
 
-                    <ToggleButton id="tbg-trainer" variant="light" value={1}>
+                    <ToggleButton id="tbg-trainer" variant="light" value={1} style={{
+                        color: this.state.role === 1 ? "green" : "gray",
+                        backgroundColor: 'transparent',
+                        border: 'none',
+                        borderBottom: '3px solid',
+                        borderRadius: '0',
+                        boxShadow: 'none',
+                    }}>
                         TRAINER
                     </ToggleButton>
 
-                    <ToggleButton id="tbg-trainee" variant="light" value={2}>
+                    <ToggleButton id="tbg-trainee" variant="light" value={2} style={{
+                        color: this.state.role === 2 ? "green" : "gray",
+                        backgroundColor: 'transparent',
+                        border: 'none',
+                        borderBottom: '3px solid',
+                        borderRadius: '0',
+                        boxShadow: 'none',
+                    }}>
                         TRAINEE
                     </ToggleButton>
                 </ToggleButtonGroup>
 
                 <Row>
                     <Form.Group as={Col} className="mb-3" controlId="formBasicCounty">
-                        <Form.Label>County</Form.Label>
+                        <InputGroup.Text id="county-icon"
+                                         style={{
+                                             backgroundColor: 'transparent',
+                                             border: 'none',
+                                             color: 'white'
+                                         }}>
+                            <BiWorld className={"h4"} style={{color: 'green'}}/>
+                            <Form.Label>County</Form.Label>
+                        </InputGroup.Text>
                         <Form.Control type="text"
                                       defaultValue={this.state.county}
                                       name="county"
+                                      style={{
+                                          backgroundColor: "#424242",
+                                          border: 'none',
+                                          boxShadow: 'none',
+                                          color: 'white'
+                                      }}
                                       required onChange={this.handleChange}/>
                     </Form.Group>
 
                     <Form.Group as={Col} className="mb-3" controlId="formBasicCity">
-                        <Form.Label>City</Form.Label>
+                        <InputGroup.Text id="city-icon"
+                                         style={{
+                                             backgroundColor: 'transparent',
+                                             border: 'none',
+                                             color: 'white'
+                                         }}>
+                            <MdLocationCity className={"h4"} style={{color: 'green'}}/>
+                            <Form.Label>City</Form.Label>
+                        </InputGroup.Text>
                         <Form.Control type="text"
                                       defaultValue={this.state.city}
                                       name="city"
+                                      style={{
+                                          backgroundColor: "#424242",
+                                          border: 'none',
+                                          boxShadow: 'none',
+                                          color: 'white'
+                                      }}
                                       required onChange={this.handleChange}/>
                     </Form.Group>
                 </Row>
 
                 <Form.Group as={Col} className="mb-3" controlId="formBasicStreet">
-                    <Form.Label>Street</Form.Label>
+                    <InputGroup.Text id="street-icon"
+                                     style={{
+                                         backgroundColor: 'transparent',
+                                         border: 'none',
+                                         color: 'white'
+                                     }}>
+                        <MdStreetview className={"h4"} style={{color: 'green'}}/>
+                        <Form.Label>Street</Form.Label>
+                    </InputGroup.Text>
                     <Form.Control type="text"
                                   defaultValue={this.state.street}
                                   name="street"
+                                  style={{
+                                      backgroundColor: "#424242",
+                                      border: 'none',
+                                      boxShadow: 'none',
+                                      color: 'white'
+                                  }}
                                   required onChange={this.handleChange}/>
                 </Form.Group>
 
                 <Row className="mb-4">
                     <Form.Group as={Col} className="mb-2" controlId="formBasicAge">
-                        <Form.Label>Age</Form.Label>
+                        <InputGroup.Text id="age-icon"
+                                         style={{
+                                             backgroundColor: 'transparent',
+                                             border: 'none',
+                                             color: 'white'
+                                         }}>
+                            <AiOutlineFieldNumber className={"h4"} style={{color: 'green'}}/>
+                            <Form.Label>Age</Form.Label>
+                        </InputGroup.Text>
                         <Form.Control type="number"
                                       defaultValue={this.state.age}
                                       name="age"
+                                      style={{
+                                          backgroundColor: "#424242",
+                                          border: 'none',
+                                          boxShadow: 'none',
+                                          color: 'white'
+                                      }}
                                       required onChange={this.handleChange}/>
                     </Form.Group>
 
 
                     <Form.Group as={Col} className="mb-2" controlId="formBasicHeight">
-                        <Form.Label>Height</Form.Label>
+                        <InputGroup.Text id="height-icon"
+                                         style={{
+                                             backgroundColor: 'transparent',
+                                             border: 'none',
+                                             color: 'white'
+                                         }}>
+                            <GiBodyHeight className={"h4"} style={{color: 'green'}}/>
+                            <Form.Label>Height</Form.Label>
+                        </InputGroup.Text>
                         <Form.Control type="number"
                                       defaultValue={this.state.height}
                                       name="height"
+                                      style={{
+                                          backgroundColor: "#424242",
+                                          border: 'none',
+                                          boxShadow: 'none',
+                                          color: 'white'
+                                      }}
                                       required onChange={this.handleChange}/>
                     </Form.Group>
 
                     <Form.Group as={Col} className="mb-2" controlId="formBasicWeight">
-                        <Form.Label>Weight</Form.Label>
+                        <InputGroup.Text id="weight-icon"
+                                         style={{
+                                             backgroundColor: 'transparent',
+                                             border: 'none',
+                                             color: 'white'
+                                         }}>
+                            <GiWeightScale className={"h4"} style={{color: 'green'}}/>
+                            <Form.Label>Weight</Form.Label>
+                        </InputGroup.Text>
                         <Form.Control type="number"
                                       defaultValue={this.state.weight}
                                       name="weight"
+                                      style={{
+                                          backgroundColor: "#424242",
+                                          border: 'none',
+                                          boxShadow: 'none',
+                                          color: 'white'
+                                      }}
                                       required onChange={this.handleChange}/>
                     </Form.Group>
 
                     <Form.Group as={Col} xs={5} className="mb-2" controlId="formBasicBirthday">
-                        <Form.Label>Birthday</Form.Label>
+                        <InputGroup.Text id="birthday-icon"
+                                         style={{
+                                             backgroundColor: 'transparent',
+                                             border: 'none',
+                                             color: 'white'
+                                         }}>
+                            <MdDateRange className={"h4"} style={{color: 'green'}}/>
+                            <Form.Label>Birthday</Form.Label>
+                        </InputGroup.Text>
                         <Form.Control type="date"
                                       defaultValue={this.state.birthday}
                                       name="birthday"
+                                      style={{
+                                          backgroundColor: "#424242",
+                                          border: 'none',
+                                          boxShadow: 'none',
+                                          color: 'white'
+                                      }}
                                       required onChange={this.handleChange}/>
                     </Form.Group>
                 </Row>
 
                 {this.state.role === 1 ?
                     <Form.Group as={Col} className="mb-4" controlId="formBasicCertificate">
-                        <Form.Label>Certificate</Form.Label>
+                        <InputGroup.Text id="certificate-icon"
+                                         style={{
+                                             backgroundColor: 'transparent',
+                                             border: 'none',
+                                             color: 'white'
+                                         }}>
+                            <FaCertificate className={"h4"} style={{color: 'green'}}/>
+                            <Form.Label>Certificate</Form.Label>
+                        </InputGroup.Text>
                         <Form.Control type="file"
                                       defaultValue={null}
                                       required onChange={this.handleChange}
-                                      name="certificate"/>
+                                      name="certificate"
+                                      style={{
+                                          backgroundColor: "#212121",
+                                          color: "white"
+                                      }}/>
                     </Form.Group> : null
                 }
 
                 <Row className="mb-4">
                     <Col xs={6}>
-                        <Button variant="primary" style={{width: '100%'}} type="submit"
+                        <Button variant="success" style={{width: '100%'}} type="submit"
                                 onClick={this.handleCreateAccount}>
                             CREATE ACCOUNT
                         </Button>
                     </Col>
                     <Col>
-                        <Button variant="outline-primary" onClick={this.prevStep} style={{width: '100%'}}>
+                        <Button variant="outline-success" onClick={this.prevStep} style={{width: '100%'}}>
                             Back
                         </Button>
                     </Col>
@@ -222,66 +354,165 @@ class SignUp extends Component {
             <Form>
                 <Row>
                     <Form.Group as={Col} className="mb-3" controlId="formFirstName">
-                        <Form.Label>First Name</Form.Label>
+                        <InputGroup.Text id="first-name-icon"
+                                         style={{
+                                             backgroundColor: 'transparent',
+                                             border: 'none',
+                                             color: 'white'
+                                         }}>
+                            <BsFillPersonFill className={"h4"} style={{color: 'green'}}/>
+                            <Form.Label>First Name</Form.Label>
+                        </InputGroup.Text>
                         <Form.Control type="text"
                                       defaultValue={this.state.firstName}
                                       name="firstName"
-                                      required onChange={this.handleChange}/>
+                                      style={{
+                                          backgroundColor: "#424242",
+                                          border: 'none',
+                                          boxShadow: 'none',
+                                          color: 'white'
+                                      }}
+                                      required onChange={this.handleChange}
+                        />
                     </Form.Group>
 
                     <Form.Group as={Col} className="mb-3" controlId="formLastName">
-                        <Form.Label>Last Name</Form.Label>
+                        <InputGroup.Text id="last-name-icon"
+                                         style={{
+                                             backgroundColor: 'transparent',
+                                             border: 'none',
+                                             color: 'white'
+                                         }}>
+                            <BsFillPersonFill className={"h4"} style={{color: 'green'}}/>
+                            <Form.Label>Last Name</Form.Label>
+                        </InputGroup.Text>
                         <Form.Control type="text"
                                       defaultValue={this.state.lastName}
                                       name="lastName"
+                                      style={{
+                                          backgroundColor: "#424242",
+                                          border: 'none',
+                                          boxShadow: 'none',
+                                          color: 'white'
+                                      }}
                                       required onChange={this.handleChange}/>
                     </Form.Group>
                 </Row>
 
                 <Row>
                     <Form.Group as={Col} className="mb-3" controlId="formBasicUsername">
-                        <Form.Label>Username</Form.Label>
+                        <InputGroup.Text id="username-icon"
+                                         style={{
+                                             backgroundColor: 'transparent',
+                                             border: 'none',
+                                             color: 'white'
+                                         }}>
+                            <CgGym className={"h4"} style={{color: 'green'}}/>
+                            <Form.Label>Username</Form.Label>
+                        </InputGroup.Text>
                         <Form.Control type="text"
                                       defaultValue={this.state.username}
                                       name="username"
+                                      style={{
+                                          backgroundColor: "#424242",
+                                          border: 'none',
+                                          boxShadow: 'none',
+                                          color: 'white'
+                                      }}
                                       required onChange={this.handleChange}/>
                     </Form.Group>
 
                     <Form.Group as={Col} className="mb-3" controlId="formBasicContactPhone">
-                        <Form.Label>Contact Phone</Form.Label>
+                        <InputGroup.Text id="phone-icon"
+                                         style={{
+                                             backgroundColor: 'transparent',
+                                             border: 'none',
+                                             color: 'white'
+                                         }}>
+                            <AiFillPhone className={"h4"} style={{color: 'green'}}/>
+                            <Form.Label>Contact Phone</Form.Label>
+                        </InputGroup.Text>
                         <Form.Control type="tel"
                                       defaultValue={this.state.contactPhone}
                                       name="contactPhone"
+                                      style={{
+                                          backgroundColor: "#424242",
+                                          border: 'none',
+                                          boxShadow: 'none',
+                                          color: 'white'
+                                      }}
                                       required onChange={this.handleChange}/>
                     </Form.Group>
 
                 </Row>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
+                    <InputGroup.Text id="email-icon"
+                                     style={{
+                                         backgroundColor: 'transparent',
+                                         border: 'none',
+                                         color: 'white'
+                                     }}>
+                        <AiTwotoneMail className={"h4"} style={{color: 'green'}}/>
+                        <Form.Label>Email Address</Form.Label>
+                    </InputGroup.Text>
                     <Form.Control type="email"
                                   defaultValue={this.state.email}
                                   name="email"
+                                  style={{
+                                      backgroundColor: "#424242",
+                                      border: 'none',
+                                      boxShadow: 'none',
+                                      color: 'white'
+                                  }}
                                   required onChange={this.handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
+                    <InputGroup.Text id="password-icon"
+                                     style={{
+                                         backgroundColor: 'transparent',
+                                         border: 'none',
+                                         color: 'white'
+                                     }}>
+                        <RiLockPasswordFill className={"h4"} style={{color: 'green'}}/>
+                        <Form.Label>Password</Form.Label>
+                    </InputGroup.Text>
                     <Form.Control type="password"
                                   defaultValue={this.state.password}
                                   name="password"
+                                  style={{
+                                      backgroundColor: "#424242",
+                                      border: 'none',
+                                      boxShadow: 'none',
+                                      color: 'white'
+                                  }}
                                   required onChange={this.handleChange}/>
                 </Form.Group>
 
-                <Form.Group className="mb-4" controlId="formConfirmPassword">
-                    <Form.Label>Confirm Password</Form.Label>
+                <Form.Group className="mb-3" controlId="formConfirmPassword">
+                    <InputGroup.Text id="conf-password-icon"
+                                     style={{
+                                         backgroundColor: 'transparent',
+                                         border: 'none',
+                                         color: 'white'
+                                     }}>
+                        <RiLockPasswordFill className={"h4"} style={{color: 'green'}}/>
+                        <Form.Label>Confirm Password</Form.Label>
+                    </InputGroup.Text>
                     <Form.Control type="password"
                                   defaultValue={this.state.confirmPassword}
-                                  name="confirmPassword"
+                                  name="password"
+                                  style={{
+                                      backgroundColor: "#424242",
+                                      border: 'none',
+                                      boxShadow: 'none',
+                                      color: 'white'
+                                  }}
                                   required onChange={this.handleChange}/>
                 </Form.Group>
 
-                <Button className="mb-3" variant="primary" style={{width: '50%'}} onClick={this.nextStep}>
+                <Button className="mb-3" variant="success" style={{width: '50%'}} onClick={this.nextStep}>
                     NEXT
                 </Button>
             </Form>
@@ -323,7 +554,7 @@ class User {
         this.weight = weight;
         this.birthday = birthday;
         this.certificate = certificate;
-        this.userPicture=userPicture;
+        this.userPicture = userPicture;
     }
 
     toString() {

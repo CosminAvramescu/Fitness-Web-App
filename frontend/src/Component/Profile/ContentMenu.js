@@ -13,6 +13,7 @@ import {CgGym} from "react-icons/cg";
 import Container from "react-bootstrap/Container";
 import TrainerCard from "../Search/TrainerCard";
 import WNCard from "../Search/WNCard";
+import TraineeCard from "../Search/TraineeCard";
 
 class ContentMenu extends Component {
     render() {
@@ -25,7 +26,46 @@ class ContentMenu extends Component {
                 return this.renderWorkouts();
             case 4:
                 return this.renderNutrition();
+            case 5:
+                return this.renderTrainee();
         }
+    }
+
+    renderTrainee() {
+        return(
+            <Container fluid="True">
+                <Stack gap={4}>
+                    <InputGroup>
+                        <Form.Control className="me-auto" placeholder="Search..."
+                                      style={{
+                                          color: 'gray',
+                                          backgroundColor: 'transparent',
+                                          border: 'none',
+                                          borderBottom: '3px solid',
+                                          borderRadius: '0',
+                                          boxShadow: 'none',
+                                      }}/>
+                        <InputGroup.Text id="search-icon"
+                                         style={{
+                                             color: 'gray',
+                                             backgroundColor: 'transparent',
+                                             boxShadow: 'none',
+                                             border: 'none',
+                                             borderBottom: '3px solid',
+                                             borderRadius: '0',
+                                         }}>
+                            <BiSearch style={{color: 'gray'}}/>
+                        </InputGroup.Text>
+                    </InputGroup>
+
+                    {[...Array(5)].map(() => {
+                        return (
+                            <TraineeCard/>
+                        );
+                    })}
+                </Stack>
+            </Container>
+        )
     }
 
     renderTrainers() {
