@@ -7,7 +7,8 @@ const ImageComponent = (props) => {
     useEffect(() => {
         const fetchImage = async () => {
             try {
-                const response = await axios.get('http://localhost:8082/workout/download/3', {
+                //console.log(`http://localhost:8082/`+props.path+`/`+id.toString())
+                const response = await axios.get(`http://localhost:8082/`+props.path+`/`+props.id.toString(), {
                     responseType: 'arraybuffer'
                 }); // Replace with the actual URL to your backend endpoint
 

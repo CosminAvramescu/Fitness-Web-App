@@ -11,6 +11,7 @@ import java.sql.Date;
 @Data
 @NoArgsConstructor
 public class UserDTO {
+    Integer id;
 
     private Role role;
 
@@ -39,4 +40,10 @@ public class UserDTO {
     private Float weight;
 
     private Date birthday;
+
+    private String personalDescription;
+
+    private Integer workoutNo;
+
+    private Integer nutritionNo;
 }

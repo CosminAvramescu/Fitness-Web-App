@@ -10,6 +10,7 @@ import UploadFile from "./UploadFile/UploadFile";
 import ImageComponent from "./Image/Image";
 import Search from "./Search/Search";
 import Profile from "./Profile/Profile";
+import ExerciseFILE from "./Search/ExerciseFILE";
 
 
 class NavbarComp extends Component {
@@ -49,6 +50,7 @@ class NavbarComp extends Component {
                         <Route path="/UploadFile" element={<UploadFile/>}/>
                         <Route path="/Search" element={<Search/>}/>
                         <Route path="/Profile" element={<Profile/>}/>
+                        <Route path="/Exercises" element={<ExerciseFILE/>}/>
                         <Route path="/Image" element={<ImageComponent />} />
                         <Route path="*" element={<Homepage/>}/>
                     </Routes>
