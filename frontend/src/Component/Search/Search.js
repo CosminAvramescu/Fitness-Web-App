@@ -13,10 +13,12 @@ const Search = () => {
         const [step, setStep] = useState(1);
         const [users, setUsers] = useState([]);
         const [workoutList, setWorkoutList] = useState([]);
+        const [nutritionList, setNutritionList] = useState([]);
 
         useEffect(() => {
             fetchUserList();
             fetchWorkoutList();
+            fetchNutritionList();
         }, []);
 
         const handleStepChange = (selectedRole) => {
@@ -37,6 +39,16 @@ const Search = () => {
             try {
                 const response = await axios.get('http://localhost:8082/workout/all');
                 setWorkoutList(response.data);
+            } catch (error) {
+                console.error('Error fetching user list:', error);
+            }
+        };
+
+        const fetchNutritionList = async () => {
+            try {
+                const response = await axios.get('http://localhost:8082/nutrition/all');
+                setNutritionList(response.data);
+                console.log(response.data)
             } catch (error) {
                 console.error('Error fetching user list:', error);
             }
@@ -72,14 +84,17 @@ const Search = () => {
         const renderNutritions = () => {
             return (
                 <Stack gap={5} className={"m-5"}>
-                    {[...Array(5)].map(() => {
-                        return (
-                            <WNCard auto role={0}/>
-                        );
+                    {[...Array(nutritionList.length)].map((value, index) => {
+                    return (
+                        <WNCard auto id={nutritionList[index].trainerId - 1}
+                                path={'nutrition/downloadN'} workout={nutritionList[index]}
+                        role={0}/>
+                    );
+                })
                     })}
                 </Stack>
-            )
-        }
+            );
+        };
 
         const renderSwitch = () => {
             switch (step) {
