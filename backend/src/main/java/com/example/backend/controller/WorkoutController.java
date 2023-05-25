@@ -69,11 +69,39 @@ public class WorkoutController {
         return workoutService.addWorkout(workout);
     }
 
+    @PutMapping("upload/workoutPicture/{workoutId}")
+    public Workout setWorkoutPicture(@RequestParam("file") MultipartFile file, @PathVariable("workoutId") Integer workoutId) {
+        Workout workout = workoutService.getWorkoutById(workoutId);
+
+        try {
+            workout.setWorkoutPicture(file.getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return workoutService.addWorkout(workout);
+    }
+
     @GetMapping("/download/{id}")
     public ResponseEntity<byte[]> getImage(@PathVariable("id") Integer id) {
         // Retrieve the image byte array based on the provided ID
         List<FileWorkout> fileWorkouts = workoutService.getWorkoutById(id).getFileWorkouts();
         byte[] imageBytes=fileWorkouts.get(0).getFileWorkout();
+
+        // Set the appropriate headers for the image response
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_JPEG); // Adjust the media type based on your image format
+        headers.setContentLength(imageBytes.length);
+
+        // Return the image byte array as the response body with the appropriate headers
+        return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/downloadW/{id}")
+    public ResponseEntity<byte[]> getImageW(@PathVariable("id") Integer id) {
+        // Retrieve the image byte array based on the provided ID
+        Workout workout = workoutService.getWorkoutById(id);
+        byte[] imageBytes=workout.getWorkoutPicture();
 
         // Set the appropriate headers for the image response
         HttpHeaders headers = new HttpHeaders();
