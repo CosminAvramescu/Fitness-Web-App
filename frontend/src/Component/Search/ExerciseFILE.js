@@ -56,13 +56,8 @@ const formattedText = (
 
 class ExerciseFILE extends Component {
     state = {
-        step: 1
-    }
-
-    handleStepChange = (selectedRole) => {
-        this.setState({
-            step: selectedRole
-        });
+        step: 1,
+        role: 0
     }
 
     renderExercises() {
@@ -103,7 +98,7 @@ class ExerciseFILE extends Component {
                                 </Row>
                             </Stack>
                         </Col>
-
+                        {this.state.role === 0 ?
                         <Col>
                             <Stack>
                                 <div className="h4">Owned by</div>
@@ -133,8 +128,14 @@ class ExerciseFILE extends Component {
                                 </Row>
                                 <button className="btn btn-primary" style={{backgroundColor: '#4CAF50', color: 'white'}}>BUY</button>
                             </Stack>
-                        </Col>
-                    </Row>
+                        </Col> :
+                            <Col className={"p-6"}>
+                            <Row>
+                                <Col><button className="btn btn-primary" style={{backgroundColor: '#4CAF50', color: 'white', width: "45%"}}>Statistics</button></Col>
+                                <Col><button className="btn btn-primary" style={{backgroundColor: '#4CAF50', color: 'white', width: "45%"}}>Edit</button></Col>
+                            </Row>
+                            </Col>}
+                        </Row>
 
 
                 {this.renderExercises()}

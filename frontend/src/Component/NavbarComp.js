@@ -11,6 +11,7 @@ import ImageComponent from "./Image/Image";
 import Search from "./Search/Search";
 import Profile from "./Profile/Profile";
 import ExerciseFILE from "./Search/ExerciseFILE";
+import ComponentAdd from "./Profile/ComponentAdd";
 
 
 class NavbarComp extends Component {
@@ -51,6 +52,7 @@ class NavbarComp extends Component {
                         <Route path="/Search" element={<Search/>}/>
                         <Route path="/Profile" element={<Profile/>}/>
                         <Route path="/Exercises" element={<ExerciseFILE/>}/>
+                        <Route path="/AddWK" element={<ComponentAdd/>}/>
                         <Route path="/Image" element={<ImageComponent />} />
                         <Route path="*" element={<Homepage/>}/>
                     </Routes>
