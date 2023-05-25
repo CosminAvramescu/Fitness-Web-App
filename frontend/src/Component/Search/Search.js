@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import TrainerCard from "./TrainerCard";
-import {InputGroup, ToggleButton, ToggleButtonGroup} from "react-bootstrap";
+import {InputGroup, Stack, ToggleButton, ToggleButtonGroup} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import {BiSearch} from 'react-icons/bi';
 import Container from "react-bootstrap/Container";
@@ -33,16 +33,33 @@ const Search = () => {
         } catch (error) {
             console.error('Error fetching user list:', error);
         }
-    };
 
-    const fetchWorkoutList = async () => {
-        try {
-            const response = await axios.get('http://localhost:8082/workout/all');
-            setWorkoutList(response.data);
-        } catch (error) {
-            console.error('Error fetching user list:', error);
+        const renderWorkouts = () => {
+            return (
+                <Stack gap={5} className={"m-5"}>
+                    {[...Array(workoutList.length)].map((value, index) => {
+                        //console.log(workoutList)
+                        return (
+                            <WNCard auto id={workoutList[index].trainerId - 1}
+                                    path={'workout/downloadW'} workout={workoutList[index]}
+                                    role={0}/>
+                        );
+                    })}
+                </Stack>
+            );
+        };
+
+        const renderNutritions = () => {
+            return (
+                <Stack gap={5} className={"m-5"}>
+                    {[...Array(5)].map(() => {
+                        return (
+                            <WNCard auto role={0}/>
+                        );
+                    })}
+                </Stack>
+            )
         }
-    };
 
     const fetchNutritionList = async () => {
         try {
@@ -62,8 +79,19 @@ const Search = () => {
             })
         );
     };
+        const renderSwitch = () => {
+            switch (step) {
+                case 1:
+                    return renderTrainers();
+                case 2:
+                    return renderWorkouts();
+                case 3:
+                    return renderNutritions();
+                default:
+                    return renderTrainers();
+            }
+        };
 
-    const renderWorkouts = () => {
         return (
             [...Array(workoutList.length)].map((value, index) => {
                 return (
@@ -76,7 +104,9 @@ const Search = () => {
 
     const renderNutritions = () => {
         return (
-            [...Array(nutritionList.length)].map((value, index) => {
+            [...Array(
+              
+              ist.length)].map((value, index) => {
                 return (
                     <WNCard auto id={nutritionList[index].trainerId-1}
                             path={'nutrition/downloadN'} workout={nutritionList[index]}/>
@@ -85,18 +115,6 @@ const Search = () => {
         );
     };
 
-    const renderSwitch = () => {
-        switch (step) {
-            case 1:
-                return renderTrainers();
-            case 2:
-                return renderWorkouts();
-            case 3:
-                return renderNutritions();
-            default:
-                return renderTrainers();
-        }
-    };
 
     return (
         <div className={'p-5'}>

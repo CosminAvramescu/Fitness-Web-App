@@ -18,7 +18,7 @@ class NavbarComp extends Component {
         return (
             <BrowserRouter>
                 <div>
-                    <Navbar collapseOnSelect expand="lg" variant="dark" style={{backgroundColor: "#212121"}}>
+                    <Navbar fixed="top" collapseOnSelect expand="lg" variant="dark" style={{backgroundColor: "#212121"}}>
                         <Container fluid>
                             <Navbar.Brand href="#home">FitnessFussion</Navbar.Brand>
                             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>

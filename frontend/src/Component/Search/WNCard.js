@@ -15,9 +15,9 @@ import ImageComponent from "../Image/Image";
 import axios from "axios";
 
 
-
 const WNCard = (props) => {
     const [expand, setExpand] = useState(false);
+    const [role, setRole] = useState(props.role);
 
     const handleExpand = (event) => {
         event.preventDefault();
@@ -25,7 +25,7 @@ const WNCard = (props) => {
     }
 
     return (
-        <Container fluid="True" className="m-5" style={{backgroundColor: "#212121", color: "#FAFAFA"}}>
+        <Container fluid="True" style={{backgroundColor: "#212121", color: "#FAFAFA"}}>
             <Row className="align-items-center">
                 <Col>
                     <Row className="align-items-center">
@@ -59,16 +59,37 @@ const WNCard = (props) => {
                 </Col>
 
                 <Col>
-                    <Stack className="align-items-center">
-                        <Row className="m-2">
-                            <Col className='col-auto'>
-                                <ImageComponent width={'50px'} height={'50px'} id={props.id+1}
-                                                path={'user/download'}/>
-                            </Col>
-                            <Col className='col-auto h2'>TRAINER</Col>
-                        </Row>
-                        <div className='h6' style={{color: 'green'}}>{uList[props.id].firstName} {uList[props.id].lastName}</div>
-                    </Stack>
+                    {
+                        props.role === 0 ?
+                            <Stack className="align-items-center">
+                                <Row className="m-2">
+                                    <Col className='col-auto'>
+                                        <ImageComponent width={'50px'} height={'50px'} id={props.id + 1}
+                                                        path={'user/download'}/>
+                                    </Col>
+                                    <Col className='col-auto h2'>TRAINER</Col>
+                                </Row>
+                                <div className='h6'
+                                     style={{color: 'green'}}>{uList[props.id].firstName} {uList[props.id].lastName}</div>
+                            </Stack>
+                            :
+                            <Stack className="align-items-center" gap={2}>
+                                <Button style={{
+                                    backgroundColor: "transparent",
+                                    color: "white",
+                                    border: "none",
+                                    boxShadow: "none"}}>
+                                    View
+                                </Button>
+                                <Button style={{
+                                    backgroundColor: "transparent",
+                                    color: "white",
+                                    border: "none",
+                                    boxShadow: "none"}}>
+                                    Edit
+                                </Button>
+                            </Stack>
+                    }
                 </Col>
 
                 <Col className='col-auto mb-5'>
@@ -85,7 +106,7 @@ const WNCard = (props) => {
 
             {expand === true ?
                 <div className="p-3">{props.workout.description}</div> :
-                <div></div>}
+                null}
         </Container>
     )
 
