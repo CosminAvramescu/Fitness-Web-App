@@ -70,6 +70,12 @@ public class UserController {
         return userMapper.toUserDTO(userService.setWorkout(userId, workoutId));
     }
 
+    @PutMapping("setNutrition/{userId}/{nutritionId}")
+    public void setNutritionPlan(@PathVariable("userId") Integer userId, @PathVariable("nutritionId") Integer nutritionId) {
+        userService.setNutritionPlan(userId, nutritionId);
+    }
+
+
     @PostMapping("addUser")
     public User addUser(@RequestBody User user) {
         return userService.addUser(user);

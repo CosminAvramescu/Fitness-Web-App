@@ -31,7 +31,7 @@ const WNCard = (props) => {
                     <Row className="align-items-center">
                         <Col className="m-2">
                             <ImageComponent width={'100px'} height={'100px'} id={props.workout.id}
-                                            path={'workout/downloadW'}/>
+                                            path={props.path}/>
                         </Col>
                         <Col className="m-2">
                             <Stack>
