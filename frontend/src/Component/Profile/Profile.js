@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -8,65 +8,34 @@ import ProfileMenu from "./ProfileMenu";
 import {Navigate} from "react-router-dom";
 import ContentMenu from "./ContentMenu";
 
-class Profile extends Component {
-    state = {
-        step: 1,
-        canLogout: false
-    }
+const Profile = () => {
+    const [step, setStep] = useState(1);
+    const [canLogout, setCanLogout] = useState(false);
 
-    handleStepChange = (selectedRole) => {
-        this.setState({
-            step: selectedRole
-        });
-
+    const handleStepChange = (selectedRole) => {
+        setStep(selectedRole);
         console.log(this.state.step)
     }
 
-    handleLogout = async () => {
-        this.setState({canLogout: true})
+    const handleLogout = async () => {
+        setCanLogout(true);
     }
 
-    handleSaveChanges = async () => {
+    const handleSaveChanges = async () => {
         console.log("Changes Saved")
     }
 
-    handleCancelChanges = () => {
+    const handleCancelChanges = () => {
         console.log("Cancel")
     }
 
-    checkChangePage() {
-        if (this.state.canLogout === true) {
-            return (<Navigate to='/home' replace={true}/>)
+    const checkChangePage = () => {
+        if (canLogout) {
+            return <Navigate to="/home" replace={true}/>;
         }
-    }
+    };
 
-    render() {
-        return (
-            <Container fluid="True" className="m-4">
-                {this.checkChangePage()}
-
-                <Row>
-                    <Col className="m-5" xs={{order: "first"}} lg="3" style={{
-                        backgroundColor: "#212121",
-                        color: "#FAFAFA"
-                    }}>
-                        {this.renderMenu()}
-                    </Col>
-
-                    <Col className="m-5" style={{
-                        backgroundColor: this.state.step > 1 ? "#111111" : "#212121",
-                        color: "#FAFAFA"
-                    }}>
-                        <ContentMenu step={this.state.step}
-                                     saveChanges={this.handleSaveChanges}
-                                     cancelChanges={this.handleCancelChanges()}/>
-                    </Col>
-                </Row>
-            </Container>
-        );
-    }
-
-    renderMenu() {
+    const renderMenu = () => {
         return (
             <Stack>
                 <Row>
@@ -90,12 +59,37 @@ class Profile extends Component {
                     </Col>
                 </Row>
 
-                <ProfileMenu step={this.state.step}
-                             handleStep={this.handleStepChange}
-                             handleLogout={this.handleLogout}/>
+                <ProfileMenu step={step}
+                             handleStep={handleStepChange}
+                             handleLogout={handleLogout}/>
             </Stack>
         );
     }
+
+    return (
+        <Container fluid="True" className="m-4">
+            {checkChangePage()}
+
+
+            <Row>
+                <Col className="m-5" xs={{order: "first"}} lg="3" style={{
+                    backgroundColor: "#212121",
+                    color: "#FAFAFA"
+                }}>
+                    {renderMenu()}
+                </Col>
+
+                <Col className="m-5" style={{
+                    backgroundColor: this.state.step > 1 ? "#111111" : "#212121",
+                    color: "#FAFAFA"
+                }}>
+                    <ContentMenu step={step}
+                                 saveChanges={handleSaveChanges}
+                                 cancelChanges={handleCancelChanges}/>
+                </Col>
+            </Row>
+        </Container>
+    );
 }
 
 export default Profile;
