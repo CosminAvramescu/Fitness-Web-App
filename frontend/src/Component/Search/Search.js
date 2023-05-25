@@ -61,7 +61,8 @@ const Search = () => {
                         //console.log(workoutList)
                         return (
                             <WNCard auto id={workoutList[index].trainerId - 1}
-                                    path={'workout/downloadW'} workout={workoutList[index]}/>
+                                    path={'workout/downloadW'} workout={workoutList[index]}
+                                    role={0}/>
                         );
                     })}
                 </Stack>
@@ -73,7 +74,7 @@ const Search = () => {
                 <Stack gap={5} className={"m-5"}>
                     {[...Array(5)].map(() => {
                         return (
-                            <WNCard auto/>
+                            <WNCard auto role={0}/>
                         );
                     })}
                 </Stack>

@@ -131,7 +131,7 @@ class ContentMenu extends Component {
 
                     {[...Array(5)].map(() => {
                         return (
-                            <WNCard/>
+                            <WNCard role={this.props.role}/>
                         );
                     })}
                 </Stack>
