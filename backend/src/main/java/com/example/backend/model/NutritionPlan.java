@@ -19,7 +19,17 @@ public class NutritionPlan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
+    String title;
+
+    String price;
+
+    String timeToComplete;
+
     String description;
+
+    @Lob
+    byte[] nutritionPicture;
+
 
     @OneToMany
     List<FileWorkout> fileWorkouts=new ArrayList<>();

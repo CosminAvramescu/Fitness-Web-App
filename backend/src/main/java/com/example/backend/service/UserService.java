@@ -1,12 +1,14 @@
 package com.example.backend.service;
 
 import com.example.backend.dto.UserDTO;
+import com.example.backend.model.NutritionPlan;
 import com.example.backend.model.Role;
 import com.example.backend.model.User;
 import com.example.backend.model.Workout;
 import com.example.backend.register.token.Token;
 import com.example.backend.register.token.TokenRepository;
 import com.example.backend.register.token.TokenService;
+import com.example.backend.repository.NutritionPlanRepository;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.repository.WorkoutRepository;
 import com.example.backend.security.PasswordEncoder;
@@ -35,6 +37,8 @@ public class UserService{
     private final TokenService tokenService;
 
     private final TokenRepository tokenRepository;
+
+    private final NutritionPlanRepository nutritionPlanRepository;
 
     private final WorkoutRepository workoutRepository;
 
@@ -107,6 +111,17 @@ public class UserService{
         user.setWorkoutList(workoutList);
 
         return userRepository.save(user);
+    }
+
+    public void setNutritionPlan(Integer userId, Integer nutritionId) {
+        User user=userRepository.getUserById(userId);
+        user.setNutritionNo(user.getNutritionNo()+1);
+        NutritionPlan nutritionPlan=nutritionPlanRepository.getNutritionPlanById(nutritionId);
+        List<NutritionPlan> nutritionPlans=user.getNutritionPlans();
+        nutritionPlans.add(nutritionPlan);
+        user.setNutritionPlans(nutritionPlans);
+
+        userRepository.save(user);
     }
 
     public List<User> getAll(){
