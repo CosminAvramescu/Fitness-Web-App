@@ -18,7 +18,7 @@ function Homepage() {
                 <p style={{ position: 'absolute', top: 260, left: 150, color:'white'  }}>
                     and start your journey towards a healthier and happier lifestyle!</p>
                 <img src="https://i.imgur.com/K5kcSeg.jpg" alt="Fitness" style={{ width: 350, high: 250, position: "absolute", top: 90, right: 200 }}/>
-                <button style={{ position: 'absolute', top: 320, left: 150, backgroundColor: '#4CAF50', padding: '10px 20px', color: 'black', border: 'none', borderRadius: '5px', fontSize: '16px', cursor: 'pointer' }} onClick={() => window.location.href = 'http://localhost:3000/signIn'}>Get Started</button>
+                <button style={{ position: 'absolute', top: 320, left: 150, backgroundColor: '#4CAF50', padding: '10px 20px', color: 'black', border: 'none', borderRadius: '5px', fontSize: '16px', cursor: 'pointer' }} onClick={() => window.location.href = 'http://localhost:3000/signUp'}>Get Started</button>
                 <button style={{ position: 'absolute', top: 320, left: 400, backgroundColor: '#FFFFFF', padding: '10px 20px', color: 'black', border: 'none', borderRadius: '5px', fontSize: '16px', cursor: 'pointer' }}>Our Plans</button>
                 <header style={{ position: 'absolute', top: 450, left: 150  }}>
                     <h2 style={{  color: 'white' }}>Workout Plans & <span style={{ color: 'darkgreen' }}>Nutritions</span></h2>
