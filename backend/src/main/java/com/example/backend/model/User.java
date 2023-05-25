@@ -53,15 +53,42 @@ public class User {
 
     private Date birthday;
 
-    //private String sex;
-
     @Lob
     byte[] certificate;
 
+    @Lob
+    byte[] userPicture;
+
+    private String personalDescription;
+
+    private Integer workoutNo;
+
+    private Integer nutritionNo;
 
     @ManyToMany
-    List<Workout> workoutList=new ArrayList<>();
+    List<Workout> workoutList = new ArrayList<>();
 
     @ManyToMany
-    List<NutritionPlan> nutritionPlans=new ArrayList<>();
+    List<NutritionPlan> nutritionPlans = new ArrayList<>();
+
+    public User(Integer id, Role role, String firstName, String lastName, String username, String email,
+                String contactPhone, String password, String county, String city, String street, Integer age,
+                Float height, Float weight, Date birthday, String personalDescription) {
+        this.id = id;
+        this.role = role;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.contactPhone = contactPhone;
+        this.password = password;
+        this.county = county;
+        this.city = city;
+        this.street = street;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.birthday = birthday;
+        this.personalDescription = personalDescription;
+    }
 }

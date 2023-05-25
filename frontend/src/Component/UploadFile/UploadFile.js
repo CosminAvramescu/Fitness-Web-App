@@ -37,7 +37,7 @@ export default class UploadFile extends Component {
         console.log(this.state.files[0]);
 
         let url =
-            "http://localhost:8082/user/upload/certificate/1";
+            "http://localhost:8082/workout/upload/1";
         let response = await axios.put(url, formData,
             {
                 headers: {

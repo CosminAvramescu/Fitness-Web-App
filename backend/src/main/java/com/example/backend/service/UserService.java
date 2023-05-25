@@ -100,6 +100,7 @@ public class UserService{
 
     public User setWorkout(Integer userId,Integer workoutId){
         User user=userRepository.getUserById(userId);
+        user.setWorkoutNo(user.getWorkoutNo()+1);
         Workout workout=workoutRepository.getWorkoutById(workoutId);
         List<Workout> workoutList=user.getWorkoutList();
         workoutList.add(workout);

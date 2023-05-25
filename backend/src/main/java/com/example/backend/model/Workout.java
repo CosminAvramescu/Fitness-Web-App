@@ -17,10 +17,19 @@ public class Workout {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
+    String title;
+
     String description;
+
+    String price;
+
+    String timeToComplete;
 
     @OneToMany
     List<FileWorkout> fileWorkouts=new ArrayList<>();
+
+    @Lob
+    byte[] workoutPicture;
 
     @ManyToMany
     List<User> users=new ArrayList<>();

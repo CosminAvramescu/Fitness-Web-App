@@ -306,7 +306,8 @@ class User {
                 height,
                 weight,
                 birthday,
-                certificate) {
+                certificate,
+                userPicture) {
         this.role = role;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -322,6 +323,7 @@ class User {
         this.weight = weight;
         this.birthday = birthday;
         this.certificate = certificate;
+        this.userPicture=userPicture;
     }
 
     toString() {

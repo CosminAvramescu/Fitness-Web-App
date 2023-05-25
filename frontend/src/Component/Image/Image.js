@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const ImageComponent = () => {
+const ImageComponent = (props) => {
     const [imageSrc, setImageSrc] = useState('');
 
     useEffect(() => {
         const fetchImage = async () => {
             try {
-                const response = await axios.get('http://localhost:8082/workout/download/3', {
+                //console.log(`http://localhost:8082/`+props.path+`/`+id.toString())
+                const response = await axios.get(`http://localhost:8082/`+props.path+`/`+props.id.toString(), {
                     responseType: 'arraybuffer'
                 }); // Replace with the actual URL to your backend endpoint
 
@@ -26,7 +27,9 @@ const ImageComponent = () => {
         fetchImage();
     }, []);
 
-    return <img src={imageSrc} alt="Image" />;
+    return <img src={imageSrc} alt="Image"
+                className={"rounded-circle"}
+                style={{width:props.width, height:props.height}}/>;
 };
 
 export default ImageComponent;
