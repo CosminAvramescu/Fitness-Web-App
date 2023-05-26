@@ -7,7 +7,7 @@ const ImageComponent = (props) => {
     useEffect(() => {
         const fetchImage = async () => {
             try {
-                //console.log(`http://localhost:8082/`+props.path+`/`+id.toString())
+                console.log(`http://localhost:8082/`+props.path+`/`+props.id.toString())
                 const response = await axios.get(`http://localhost:8082/`+props.path+`/`+props.id.toString(), {
                     responseType: 'arraybuffer'
                 }); // Replace with the actual URL to your backend endpoint

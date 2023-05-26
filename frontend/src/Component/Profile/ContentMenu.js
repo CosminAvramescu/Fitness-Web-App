@@ -16,6 +16,51 @@ import WNCard from "../Search/WNCard";
 import TraineeCard from "../Search/TraineeCard";
 
 class ContentMenu extends Component {
+    handleChange = (place, event) => {
+        console.log(event.target.value)
+        switch (place){
+            case 'firstName':
+                this.props.u.firstName=event.target.value;
+                break;
+            case 'lastName':
+                this.props.u.lastName=event.target.value;
+                break;
+            case 'username':
+                this.props.u.username=event.target.value;
+                break;
+            case 'email':
+                this.props.u.email=event.target.value;
+                break;
+            case 'contactPhone':
+                this.props.u.contactPhone=event.target.value;
+                break;
+            case 'county':
+                this.props.u.county=event.target.value;
+                break;
+            case 'city':
+                this.props.u.city=event.target.value;
+                break;
+            case 'street':
+                this.props.u.street=event.target.value;
+                break;
+            case 'age':
+                this.props.u.age=event.target.value;
+                break;
+            case 'height':
+                this.props.u.height=event.target.value;
+                break;
+            case 'weight':
+                this.props.u.weight=event.target.value;
+                break;
+            case 'birthday':
+                this.props.u.birthday=event.target.value;
+                break;
+            default:
+                break;
+        }
+    };
+
+
     render() {
         switch (this.props.step) {
             case 1:
@@ -171,7 +216,9 @@ class ContentMenu extends Component {
 
                     {[...Array(5)].map(() => {
                         return (
-                            <WNCard role={this.props.role}/>
+                            <WNCard auto id={5}
+                                    path={'workout/downloadW'}
+                                    role={this.props.role}/>
                         );
                     })}
                 </Stack>
@@ -194,7 +241,7 @@ class ContentMenu extends Component {
                             <Form.Label>First Name</Form.Label>
                         </InputGroup.Text>
                         <Form.Control type="text"
-                                      defaultValue="TODO: Name From Back"
+                                      defaultValue={this.props.user.firstName}
                                       name="firstName"
                                       style={{
                                           backgroundColor: "#424242",
@@ -202,6 +249,7 @@ class ContentMenu extends Component {
                                           boxShadow: 'none',
                                           color: 'white'
                                       }}
+                                      onChange={(event)=>this.handleChange('firstName', event)}
                         />
                     </Form.Group>
 
@@ -216,14 +264,16 @@ class ContentMenu extends Component {
                             <Form.Label>Last Name</Form.Label>
                         </InputGroup.Text>
                         <Form.Control type="text"
-                                      defaultValue="TODO: Last Name From Back"
+                                      defaultValue={this.props.user.lastName}
                                       name="lastName"
                                       style={{
                                           backgroundColor: "#424242",
                                           border: 'none',
                                           boxShadow: 'none',
                                           color: 'white'
-                                      }}/>
+                                      }}
+                        onChange={(event)=>this.handleChange('lastName', event)}
+                        />
                     </Form.Group>
                 </Row>
 
@@ -239,14 +289,15 @@ class ContentMenu extends Component {
                             <Form.Label>Username</Form.Label>
                         </InputGroup.Text>
                         <Form.Control type="text"
-                                      defaultValue="TODO: Username From Back"
+                                      defaultValue={this.props.user.username}
                                       name="username"
                                       style={{
                                           backgroundColor: "#424242",
                                           border: 'none',
                                           boxShadow: 'none',
                                           color: 'white'
-                                      }}/>
+                                      }}
+                        onChange={(event)=>this.handleChange('username', event)}/>
                     </Form.Group>
 
                     <Form.Group as={Col} className="mb-3" controlId="formBasicContactPhone">
@@ -260,14 +311,15 @@ class ContentMenu extends Component {
                             <Form.Label>Contact Phone</Form.Label>
                         </InputGroup.Text>
                         <Form.Control type="tel"
-                                      defaultValue="TODO: Phone From Back"
+                                      defaultValue={this.props.user.contactPhone}
                                       name="contactPhone"
                                       style={{
                                           backgroundColor: "#424242",
                                           border: 'none',
                                           boxShadow: 'none',
                                           color: 'white'
-                                      }}/>
+                                      }}
+                        onChange={(event)=>this.handleChange('contactPhone', event)}/>
                     </Form.Group>
 
                 </Row>
@@ -283,14 +335,15 @@ class ContentMenu extends Component {
                         <Form.Label>Email Address</Form.Label>
                     </InputGroup.Text>
                     <Form.Control type="email"
-                                  defaultValue="TODO: Email From Back"
+                                  defaultValue={this.props.user.email}
                                   name="email"
                                   style={{
                                       backgroundColor: "#424242",
                                       border: 'none',
                                       boxShadow: 'none',
                                       color: 'white'
-                                  }}/>
+                                  }}
+                    onChange={(event)=>this.handleChange('email', event)}/>
                 </Form.Group>
 
                 <Row>
@@ -305,14 +358,15 @@ class ContentMenu extends Component {
                             <Form.Label>County</Form.Label>
                         </InputGroup.Text>
                         <Form.Control type="text"
-                                      defaultValue="TODO: County From Back"
+                                      defaultValue={this.props.user.county}
                                       name="county"
                                       style={{
                                           backgroundColor: "#424242",
                                           border: 'none',
                                           boxShadow: 'none',
                                           color: 'white'
-                                      }}/>
+                                      }}
+                        onChange={(event)=>this.handleChange('county', event)}/>
                     </Form.Group>
 
                     <Form.Group as={Col} className="mb-3" controlId="formBasicCity">
@@ -326,14 +380,15 @@ class ContentMenu extends Component {
                             <Form.Label>City</Form.Label>
                         </InputGroup.Text>
                         <Form.Control type="text"
-                                      defaultValue="TODO: City From Back"
+                                      defaultValue={this.props.user.city}
                                       name="city"
                                       style={{
                                           backgroundColor: "#424242",
                                           border: 'none',
                                           boxShadow: 'none',
                                           color: 'white'
-                                      }}/>
+                                      }}
+                        onChange={(event)=>this.handleChange('city', event)}/>
                     </Form.Group>
                 </Row>
 
@@ -348,14 +403,15 @@ class ContentMenu extends Component {
                         <Form.Label>Street</Form.Label>
                     </InputGroup.Text>
                     <Form.Control type="text"
-                                  defaultValue="TODO: Street From Back"
+                                  defaultValue={this.props.user.street}
                                   name="street"
                                   style={{
                                       backgroundColor: "#424242",
                                       border: 'none',
                                       boxShadow: 'none',
                                       color: 'white'
-                                  }}/>
+                                  }}
+                    onChange={(event)=>this.handleChange('street', event)}/>
                 </Form.Group>
 
                 <Row className="mb-4">
@@ -370,16 +426,16 @@ class ContentMenu extends Component {
                             <Form.Label>Age</Form.Label>
                         </InputGroup.Text>
                         <Form.Control type="number"
-                                      defaultValue="-1"
+                                      defaultValue={this.props.user.age}
                                       name="age"
                                       style={{
                                           backgroundColor: "#424242",
                                           border: 'none',
                                           boxShadow: 'none',
                                           color: 'white'
-                                      }}/>
+                                      }}
+                        onChange={(event)=>this.handleChange('age', event)}/>
                     </Form.Group>
-
 
                     <Form.Group as={Col} className="mb-2" controlId="formBasicHeight">
                         <InputGroup.Text id="height-icon"
@@ -392,14 +448,15 @@ class ContentMenu extends Component {
                             <Form.Label>Height</Form.Label>
                         </InputGroup.Text>
                         <Form.Control type="number"
-                                      defaultValue="-1"
+                                      defaultValue={this.props.user.height}
                                       name="height"
                                       style={{
                                           backgroundColor: "#424242",
                                           border: 'none',
                                           boxShadow: 'none',
                                           color: 'white'
-                                      }}/>
+                                      }}
+                        onChange={(event)=>this.handleChange('height', event)}/>
                     </Form.Group>
 
                     <Form.Group as={Col} className="mb-2" controlId="formBasicWeight">
@@ -413,14 +470,15 @@ class ContentMenu extends Component {
                             <Form.Label>Weight</Form.Label>
                         </InputGroup.Text>
                         <Form.Control type="number"
-                                      defaultValue="-1"
+                                      defaultValue={this.props.user.weight}
                                       name="weight"
                                       style={{
                                           backgroundColor: "#424242",
                                           border: 'none',
                                           boxShadow: 'none',
                                           color: 'white'
-                                      }}/>
+                                      }}
+                        onChange={(event)=>this.handleChange('weight', event)}/>
                     </Form.Group>
 
                     <Form.Group as={Col} xs={5} className="mb-2" controlId="formBasicBirthday">
@@ -434,14 +492,15 @@ class ContentMenu extends Component {
                             <Form.Label>Birthday</Form.Label>
                         </InputGroup.Text>
                         <Form.Control type="date"
-                                      defaultValue="25/04/2001"
+                                      defaultValue={this.props.user.birthday}
                                       name="birthday"
                                       style={{
                                           backgroundColor: "#424242",
                                           border: 'none',
                                           boxShadow: 'none',
                                           color: 'white'
-                                      }}/>
+                                      }}
+                        onChange={(event)=>this.handleChange('birthday', event)}/>
                     </Form.Group>
                 </Row>
 
@@ -452,7 +511,7 @@ class ContentMenu extends Component {
                     </Button>
 
                     <Button as={Col} className={"m-3"} variant={"success"} style={{color: "black", width: "30%"}}
-                            onClick={this.props.saveChanges}>
+                            onClick={() =>this.props.saveChanges(this.props.u)}>
                         Save Changes
                     </Button>
                 </Row>
