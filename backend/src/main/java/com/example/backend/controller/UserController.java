@@ -97,7 +97,7 @@ public class UserController {
     }
 
     @PutMapping("upload/{userId}")
-    public User setUserPicture(@RequestParam("file") MultipartFile file, @PathVariable("userId") Integer userId) {
+    public UserDTO setUserPicture(@RequestParam("file") MultipartFile file, @PathVariable("userId") Integer userId) {
         User user = userService.getUserById(userId);
 
         try {
@@ -105,13 +105,13 @@ public class UserController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return userService.addUser(user);
+        return userMapper.toUserDTO(userService.addUser(user));
     }
 
     @GetMapping("/download/{id}")
     public ResponseEntity<byte[]> getImage(@PathVariable("id") Integer id) {
         // Retrieve the image byte array based on the provided ID
-        byte[] imageBytes=userService.getUserById(id).getUserPicture();
+        byte[] imageBytes = userService.getUserById(id).getUserPicture();
 
         // Set the appropriate headers for the image response
         HttpHeaders headers = new HttpHeaders();
@@ -120,5 +120,56 @@ public class UserController {
 
         // Return the image byte array as the response body with the appropriate headers
         return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
+    }
+
+    @GetMapping("getUser/{userId}")
+    public UserDTO getUserById(@PathVariable Integer userId) {
+        return userMapper.toUserDTO(userService.getUserById(userId));
+    }
+
+    @PutMapping("changeData")
+    public UserDTO changeData(@RequestBody User u) {
+        User user = userService.getUserById(u.getId());
+        if (u.getFirstName() != null) {
+            user.setFirstName(u.getFirstName());
+        }
+
+        if (u.getLastName() != null) {
+            user.setLastName(u.getLastName());
+        }
+
+        if (u.getUsername() != null) {
+            user.setUsername(u.getUsername());
+        }
+
+        if (u.getEmail() != null) {
+            user.setEmail(u.getEmail());
+        }
+
+        if (u.getAge() != null) {
+            user.setAge(u.getAge());
+        }
+
+        if (u.getWeight() != null) {
+            user.setWeight(u.getWeight());
+        }
+
+        if (u.getHeight() != null) {
+            user.setHeight(u.getHeight());
+        }
+
+        if (u.getCounty() != null) {
+            user.setCounty(u.getCounty());
+        }
+
+        if (u.getStreet() != null) {
+            user.setStreet(u.getStreet());
+        }
+
+        if (u.getContactPhone() != null) {
+            user.setContactPhone(u.getContactPhone());
+        }
+
+        return userMapper.toUserDTO(userService.addUser(user));
     }
 }

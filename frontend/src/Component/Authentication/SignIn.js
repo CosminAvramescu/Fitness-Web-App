@@ -37,7 +37,7 @@ class SignIn extends Component {
     login = async () =>{
         const user=new User(this.state.email, this.state.password)
 
-        // TODO: check Sign succesful, move it at the end
+        // TODO: check Sign succesful, fmove it at the end
         this.setState({ canSign: true })
 
         console.log(user.email, user.password)

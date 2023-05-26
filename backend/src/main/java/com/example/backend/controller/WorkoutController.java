@@ -70,7 +70,7 @@ public class WorkoutController {
     }
 
     @PutMapping("upload/workoutPicture/{workoutId}")
-    public Workout setWorkoutPicture(@RequestParam("file") MultipartFile file, @PathVariable("workoutId") Integer workoutId) {
+    public WorkoutDTO setWorkoutPicture(@RequestParam("file") MultipartFile file, @PathVariable("workoutId") Integer workoutId) {
         Workout workout = workoutService.getWorkoutById(workoutId);
 
         try {
@@ -79,7 +79,7 @@ public class WorkoutController {
             throw new RuntimeException(e);
         }
 
-        return workoutService.addWorkout(workout);
+        return workoutMapper.toWorkoutDTO(workoutService.addWorkout(workout));
     }
 
     @GetMapping("/download/{id}")

@@ -13,14 +13,26 @@ import testImage from "../../Assets/first_chanV4.png";
 import Button from "react-bootstrap/Button";
 import ImageComponent from "../Image/Image";
 import axios from "axios";
+import {Navigate} from "react-router-dom";
 
 
 const WNCard = (props) => {
     const [expand, setExpand] = useState(false);
+    const [canGo, setGo] = useState(false);
 
     const handleExpand = (event) => {
         event.preventDefault();
         setExpand(!expand)
+    }
+
+    const checkChangePage = () => {
+        if (canGo === true) {
+            return (<Navigate to='/Exercises' replace={true} />)
+        }
+    }
+
+    const handleGo=()=>{
+        setGo(true);
     }
 
     return (
@@ -28,7 +40,8 @@ const WNCard = (props) => {
             <Row className="align-items-center">
                 <Col>
                     <Row className="align-items-center">
-                        <Col className="m-2">
+                        {checkChangePage()}
+                        <Col className="m-2" onClick={handleGo}>
                             <ImageComponent width={'100px'} height={'100px'} id={props.workout.id}
                                             path={props.path}/>
                         </Col>
